@@ -1,9 +1,12 @@
 # Pressa document templates
 
-Professionally designed document templates you can fill with data and turn into a PDF, by hand, from code, or by asking an AI assistant. Browse them with previews at **[pressa.dev/templates](https://pressa.dev/templates)**.
+Professionally designed document templates (invoices, reports, certificates, resumes, cover letters) you can fill with data and turn into a PDF, by hand, from code, or by asking an AI assistant. Browse them with previews at **[pressa.dev/templates](https://pressa.dev/templates)**.
 
 | Template | What it is |
 |---|---|
+| [invoice](invoice) | Branded invoice, itemised table, totals and tax computed from the data |
+| [monthly-report](monthly-report) | Business report with KPI cards, a bar chart from your numbers and a metrics table |
+| [certificate](certificate) | Landscape certificate with a gold frame and signature lines |
 | [classic-resume](classic-resume) | One-page resume, serif typeface, blue section rules |
 | [modern-resume](modern-resume) | One-page resume, sans-serif, teal accent, skills table |
 | [academic-cv](academic-cv) | Multi-page academic CV with numbered publications |

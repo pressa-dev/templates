@@ -1,0 +1,91 @@
+% Monthly report - Pressa public template (MIT). https://pressa.dev/templates/monthly-report
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[margin=18mm,top=16mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{compat=1.18}
+
+\definecolor{brand}{HTML}{047857}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{band}{HTML}{ECFDF5}
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\titleformat{\section}{\color{brand}\bfseries\large}{}{0pt}{}
+\titlespacing*{\section}{0pt}{14pt}{4pt}
+\setlist[itemize]{leftmargin=1.2em, itemsep=2pt, topsep=2pt, label={\color{brand}\textbullet}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\small\color{muted} {{ company }} \quad {{ report_title }}, {{ period }}}
+\fancyfoot[R]{\small\color{muted}\thepage}
+
+\begin{document}
+
+{\color{brand}\rule{\linewidth}{3pt}}\\[8pt]
+{\small\color{muted}\MakeUppercase{ {{- company -}} }}\\[2pt]
+{\fontsize{24}{28}\selectfont\bfseries {{ report_title }}}\\[3pt]
+{\large\color{muted} {{ period }} \quad\textbar\quad Prepared by {{ prepared_by }}}
+
+\vspace{10pt}
+{{ summary }}
+
+\vspace{8pt}
+{\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{9pt}
+% colortbl paints \tabcolsep past the outer columns, so inset the table by that much.
+\noindent\hspace*{\tabcolsep}\begin{tabularx}{\dimexpr\linewidth-2\tabcolsep}{@{}C!{\color{white}\vrule width 8pt}C!{\color{white}\vrule width 8pt}C!{\color{white}\vrule width 8pt}C@{}}
+\rowcolor{band}
+{% for kpi in kpis %}\vspace{7pt}{\small\color{muted} {{ kpi.label }}\par}\vspace{2pt}{\fontsize{19}{22}\selectfont\bfseries {{ kpi.value }}\par}\vspace{1pt}{\small\color{brand} {{ kpi.change }}\par}\vspace{5pt}{% unless forloop.last %} & {% endunless %}{% endfor %} \\
+\end{tabularx}}
+
+\section{ {{- chart_title -}} }
+\begin{tikzpicture}
+\begin{axis}[
+  ybar, width=\linewidth, height=5.6cm, bar width=15pt, ymin=0,
+  axis lines*=left, axis line style={draw=muted!40}, ymajorgrids, grid style={draw=muted!15},
+  enlarge x limits=0.06, xtick=data, tick style={draw=none},
+  tick label style={font=\small, color=muted},
+  scaled y ticks=false, /pgf/number format/assume math mode=true,
+  yticklabel style={/pgf/number format/fixed},
+  nodes near coords, nodes near coords style={font=\scriptsize, color=ink},
+  symbolic x coords={ {% for point in chart %}{{ point.label }}{% unless forloop.last %},{% endunless %}{% endfor %} },
+]
+\addplot[fill=brand, draw=none] coordinates { {% for point in chart %}({{ point.label }},{{ point.value | round: 2 }}) {% endfor %} };
+\end{axis}
+\end{tikzpicture}
+
+\section{ {{- table_title -}} }
+{\rowcolors{2}{band}{white}\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{@{\hspace{6pt}}X r r r@{\hspace{6pt}}}
+\toprule
+\textbf{Metric} & \textbf{This period} & \textbf{Previous} & \textbf{Change} \\
+\midrule
+{% for row in table %}{{ row.metric }} & {{ row.current }} & {{ row.previous }} & {{ row.change }} \\
+{% endfor %}\bottomrule
+\end{tabularx}}
+
+\begin{minipage}[t]{0.48\linewidth}
+\section{Highlights}
+\begin{itemize}
+{% for item in highlights %}  \item {{ item }}
+{% endfor %}\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\section{Next steps}
+\begin{itemize}
+{% for item in next_steps %}  \item {{ item }}
+{% endfor %}\end{itemize}
+\end{minipage}
+
+\end{document}

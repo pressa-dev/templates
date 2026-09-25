@@ -1,0 +1,64 @@
+% Invoice - Pressa public template (MIT). https://pressa.dev/templates/invoice
+% Line totals, subtotal, tax and total are computed from the data.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\usepackage[margin=18mm,top=14mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{brand}{HTML}{4338CA}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{band}{HTML}{EEF2FF}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.55}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\color{ink}
+
+\begin{document}
+
+{% assign subtotal = 0 %}{% for item in items %}{% assign line = item.quantity | times: item.unit_price %}{% assign subtotal = subtotal | plus: line %}{% endfor %}{% assign tax = subtotal | times: tax_rate | divided_by: 100 %}{% assign total = subtotal | plus: tax %}
+\noindent\colorbox{brand}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{9pt}
+  \color{white}
+  \begin{tabularx}{\linewidth}{@{\hspace{6pt}}L R@{\hspace{6pt}}}
+    {\LARGE\bfseries {{ seller.name }}} & {\fontsize{26}{28}\selectfont\bfseries INVOICE} \\
+    {{ seller.address }} & No. {{ invoice_number }} \\
+    {{ seller.email }} & {{ issue_date }}
+  \end{tabularx}\vspace{9pt}}}
+
+\vspace{16pt}
+{\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}L L R@{}}
+  {\small\color{muted}BILL TO} & {\small\color{muted}PAYMENT DUE} & {\small\color{muted}AMOUNT DUE} \\[-4pt]
+  \textbf{ {{- client.name -}} } & \textbf{ {{- due_date -}} } & {\Large\bfseries\color{brand} {{ total | currency: currency }}} \\[-4pt]
+  {{ client.address }} & {{ payment_terms }} & {\small\color{muted}{{ currency }}}
+\end{tabularx}}
+
+\vspace{18pt}
+{\rowcolors{2}{band}{white}
+\begin{tabularx}{\linewidth}{@{\hspace{6pt}}X r r r@{\hspace{6pt}}}
+  \rowcolor{ink}\textcolor{white}{\textbf{Description}} & \textcolor{white}{\textbf{Qty}} & \textcolor{white}{\textbf{Unit price}} & \textcolor{white}{\textbf{Amount}} \\
+{% for item in items %}{% assign line = item.quantity | times: item.unit_price %}  {{ item.description }} & {{ item.quantity | round: 2 }} & {{ item.unit_price | currency: currency }} & {{ line | currency: currency }} \\
+{% endfor %}\end{tabularx}}
+
+\vspace{6pt}
+\hfill\begin{tabular}{@{}l r@{\hspace{6pt}}}
+  {\color{muted}Subtotal} & {{ subtotal | currency: currency }} \\
+  {\color{muted}Tax ({{ tax_rate | round: 2 }}\%)} & {{ tax | currency: currency }} \\
+  \arrayrulecolor{brand}\hline
+  \textbf{Total} & \textbf{\color{brand} {{ total | currency: currency }}} \\
+\end{tabular}
+
+\vfill
+{\color{brand}\rule{\linewidth}{1pt}}\\[4pt]
+\begin{tabularx}{\linewidth}{@{}L L@{}}
+  {\small\color{muted}PAYMENT DETAILS} & {\small\color{muted}NOTES} \\[-3pt]
+  {\small {{ payment_details }}} & {\small {{ notes }}}
+\end{tabularx}
+
+\end{document}

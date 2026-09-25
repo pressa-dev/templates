@@ -1,0 +1,16 @@
+title: Monthly report
+category: report
+position: 1
+summary: A business report with KPI cards, a bar chart drawn from your numbers, a metrics table and next steps.
+description: >-
+  A one-page management report: title and period, a short executive summary, four KPI cards, a bar
+  chart generated from your monthly figures (no image to export), a shaded metrics table comparing
+  this period with the previous one, and highlights next to next steps. It grows onto a second page
+  with a running footer if you add more.
+instructions: >-
+  Send exactly four kpis, each with a label, a formatted value (e.g. "$142.4k") and a change line.
+  chart is a list of label and numeric value pairs, oldest first, six to twelve points; say the unit
+  in chart_title. Table values are strings, already formatted. Keep the summary to two or three
+  sentences. Use only numbers the user provided; never estimate or round them into new claims.
+compiler: pdflatex
+pairs_with: []

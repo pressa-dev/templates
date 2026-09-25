@@ -1,0 +1,42 @@
+% Certificate - Pressa public template (MIT). https://pressa.dev/templates/certificate
+% The frame is drawn in the normal flow (no overlay), so one compile pass is enough.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[lining]{ebgaramond}
+\usepackage{cinzel}
+\usepackage[a4paper,landscape,margin=12mm]{geometry}
+\usepackage[tracking=true]{microtype}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\definecolor{navy}{HTML}{1E3A5F}
+\definecolor{gold}{HTML}{B8913A}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\frenchspacing
+
+\begin{document}
+\centering
+\noindent\begin{tikzpicture}
+  % Fixed bounding box, so the frame's line width can never push it onto a second page.
+  \useasboundingbox (0,0) rectangle (\linewidth, \textheight-12pt);
+  \draw[gold, line width=2.4pt] (1.2pt,1.2pt) rectangle (\linewidth-1.2pt, \textheight-13.2pt);
+  \draw[navy, line width=0.6pt] (7pt,7pt) rectangle (\linewidth-7pt, \textheight-19pt);
+  \foreach \x/\y in {15pt/15pt, \linewidth-15pt/15pt, 15pt/\textheight-27pt, \linewidth-15pt/\textheight-27pt}
+    \fill[gold] (\x,\y) circle (2.2pt);
+  \node[anchor=center, text width=0.78\linewidth, align=center, execute at begin node={\hyphenpenalty=10000}] at (0.5\linewidth, 0.5\textheight-6pt) {
+    {\color{navy}\cinzel\Large\textls[180]{ {{- organization -}} }}\\[24pt]
+    {\color{gold}\cinzelblack\fontsize{40}{46}\selectfont\spaceskip=0.32em\relax {{ title }}}\\[20pt]
+    {\color{navy}\Large\itshape {{ intro }}}\\[14pt]
+    {\color{navy}\fontsize{42}{48}\selectfont\spaceskip=0.28em\relax {{ recipient }}}\\[6pt]
+    {\color{gold}\rule{0.45\linewidth}{0.8pt}}\\[12pt]
+    {\color{navy}\Large {{ achievement }}}\\[40pt]
+    {% for signer in signatures %}\begin{minipage}[t]{0.3\linewidth}\centering
+      {\color{navy}\rule{\linewidth}{0.5pt}}\\[4pt]
+      {\color{navy}\large {{ signer.name }}}\\
+      {\color{navy}\itshape {{ signer.role }}}
+    \end{minipage}{% unless forloop.last %}\hspace{0.08\linewidth}{% endunless %}{% endfor %}\\[32pt]
+    {\color{navy} {{ date }} \quad\textbullet\quad Certificate No. {{ certificate_id }}}
+  };
+\end{tikzpicture}
+\end{document}

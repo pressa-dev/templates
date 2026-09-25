@@ -1,0 +1,16 @@
+title: Invoice
+category: invoice
+position: 1
+summary: A branded invoice with a colour header, itemised table and automatic totals and tax.
+description: >-
+  A bold header band with your business name, a summary row with the client, the due date and the
+  amount due, then an itemised table with alternating row shading. Line amounts, subtotal, tax and
+  total are calculated from quantity, unit price and tax rate, so the numbers always add up. Payment
+  details and notes sit at the foot of the page.
+instructions: >-
+  Send quantity, unit_price and tax_rate as numbers (tax_rate in percent, e.g. 8.5); the template
+  computes every amount, so never send totals. currency is a code such as USD, EUR or GBP. Keep each
+  description to one line where possible. Do not invent prices, bank details or payment terms; ask
+  the user for any that are missing.
+compiler: pdflatex
+pairs_with: []

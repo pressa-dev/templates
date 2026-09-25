@@ -1,0 +1,15 @@
+title: Certificate
+category: certificate
+position: 1
+summary: A landscape certificate with a gold double frame, engraved-style lettering and signature lines.
+description: >-
+  A formal certificate for courses, awards and recognition: landscape A4, a gold and navy double
+  frame with corner details, the title in Cinzel capitals, the recipient's name set large in EB
+  Garamond, a line describing the achievement, and one to three signature lines with names and
+  roles, plus the date and a certificate number.
+instructions: >-
+  Keep the title short (four words or fewer) and the achievement to one or two sentences. Use one to
+  three signatures. When producing a batch, keep every field the same except recipient and
+  certificate_id. Never add a signatory the user did not name.
+compiler: pdflatex
+pairs_with: []

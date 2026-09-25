@@ -1,0 +1,26 @@
+{
+  "seller": {
+    "name": "Northwind Studio",
+    "address": "48 Harbor Lane, Portland, OR 97209",
+    "email": "billing@northwind.example.com"
+  },
+  "client": {
+    "name": "Acme Robotics Inc.",
+    "address": "1200 Market Street, Suite 400, San Francisco, CA 94103"
+  },
+  "invoice_number": "2026-0142",
+  "issue_date": "September 25, 2026",
+  "due_date": "October 25, 2026",
+  "payment_terms": "Net 30",
+  "currency": "USD",
+  "tax_rate": 8.5,
+  "items": [
+    { "description": "Product design sprint: discovery workshop and user interviews", "quantity": 1, "unit_price": 4800 },
+    { "description": "UI design, dashboard and settings screens", "quantity": 36, "unit_price": 150 },
+    { "description": "Design system: components, tokens and documentation", "quantity": 24, "unit_price": 150 },
+    { "description": "Usability testing, 6 sessions with report", "quantity": 6, "unit_price": 320 },
+    { "description": "Project management", "quantity": 10, "unit_price": 110 }
+  ],
+  "payment_details": "Bank transfer to Northwind Studio LLC, First Harbor Bank, account 0012 3456 789, routing 123456789. Please include the invoice number.",
+  "notes": "Thank you for working with us. Late payments accrue 1.5% interest per month after the due date."
+}
