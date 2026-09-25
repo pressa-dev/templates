@@ -1,0 +1,16 @@
+title: Classic resume
+category: resume
+position: 1
+summary: A one-page resume in a serif typeface with blue section rules. Safe for any industry.
+description: >-
+  A calm, traditional layout that recruiters and applicant tracking systems read without trouble:
+  name and contact details centred at the top, then summary, experience, projects, skills and
+  education. Every resume template in the gallery takes the same data, so you can switch styles
+  without changing a single field.
+instructions: >-
+  Keep it to one page for up to about ten years of experience. Write each highlight as one line
+  that starts with a verb and ends with a result, with a number where there is one. Put the most
+  relevant job first. Never invent employers, dates, degrees or numbers; if a field does not apply,
+  pass an empty string rather than making something up.
+compiler: pdflatex
+pairs_with: [cover-letter]

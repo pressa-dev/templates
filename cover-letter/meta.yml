@@ -1,0 +1,15 @@
+title: Cover letter
+category: cover-letter
+position: 1
+summary: A one-page cover letter that matches the classic resume, so both read as one application.
+description: >-
+  A letter with the same header, typeface and accent colour as the classic resume: your name and
+  contact line, the date, the recipient's name, title, company and address, then your letter in as
+  many paragraphs as you need. Send it together with the resume and the application looks designed
+  as a set.
+instructions: >-
+  Three or four short paragraphs: why this role, the two or three results that prove you can do it
+  (the same facts as the resume, not new ones), and a closing line. Address a named person when the
+  posting gives one. Never invent experience or claims about the company.
+compiler: pdflatex
+pairs_with: [classic-resume]

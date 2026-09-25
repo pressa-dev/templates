@@ -1,0 +1,52 @@
+% Classic resume - Pressa public template (MIT). https://pressa.dev/templates/classic-resume
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\setlist[itemize]{leftmargin=1.2em, itemsep=1pt, topsep=2pt, parsep=0pt}
+
+% \role{Title}{Organization}{Dates}{Location}
+\newcommand{\role}[4]{\textbf{#1} \hfill #3\\ \textit{#2} \hfill \textit{#4}\par}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries {{ name }}}\\[3pt]
+  {{ headline }} \,|\, {{ location }}\\[2pt]
+  {{ email }} \,|\, {{ phone }} \,|\, {{ website }}
+\end{center}
+
+\section{Summary}
+{{ summary }}
+
+\section{Experience}
+{% for job in experience %}
+\role{ {{- job.title -}} }{ {{- job.company -}} }{ {{- job.dates -}} }{ {{- job.location -}} }
+\begin{itemize}
+{% for point in job.highlights %}  \item {{ point }}
+{% endfor %}\end{itemize}
+{% endfor %}
+
+\section{Projects}
+{% for project in projects %}\textbf{ {{- project.name -}} }: {{ project.description }}\par
+{% endfor %}
+
+\section{Skills}
+{% for group in skills %}\textbf{ {{- group.category -}} :} {{ group.items }}\par
+{% endfor %}
+
+\section{Education}
+{% for school in education %}\role{ {{- school.degree -}} }{ {{- school.school -}} }{ {{- school.dates -}} }{ {{- school.location -}} }
+{% endfor %}
+
+\end{document}

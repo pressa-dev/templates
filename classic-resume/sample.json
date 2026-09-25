@@ -1,0 +1,49 @@
+{
+  "name": "Alex Rivera",
+  "headline": "Backend Engineer",
+  "location": "Chicago, IL",
+  "email": "alex.rivera@example.com",
+  "phone": "(312) 555-0142",
+  "website": "alexrivera.example.com",
+  "summary": "Backend engineer with 8 years of experience building payment and logistics systems in Python and Go. Comfortable owning a service from design to on-call, and at my best on high-volume, event-driven platforms.",
+  "experience": [
+    {
+      "title": "Senior Backend Engineer",
+      "company": "Lumen Logistics",
+      "location": "Chicago, IL",
+      "dates": "2021 - present",
+      "highlights": [
+        "Rebuilt the shipment tracking service in Go, cutting p95 latency from 900 ms to 180 ms at 40 million events a day.",
+        "Designed the Kafka event pipeline that replaced nightly batch jobs, so customers see status changes within seconds.",
+        "Led a team of four engineers and introduced design reviews and on-call runbooks; paging incidents fell by 60%.",
+        "Moved 30 services from EC2 to Kubernetes on AWS with no customer-facing downtime."
+      ]
+    },
+    {
+      "title": "Backend Engineer",
+      "company": "Harbor Payments",
+      "location": "Chicago, IL",
+      "dates": "2017 - 2021",
+      "highlights": [
+        "Built card payment and refund APIs in Python (Django) handling $2 billion in annual volume.",
+        "Added idempotency keys and retry-safe webhooks, ending duplicate charges during partner outages.",
+        "Wrote the PostgreSQL partitioning plan that kept the ledger fast past 1 billion rows.",
+        "Mentored three junior engineers, two of whom were promoted within a year."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "queuewatch",
+      "description": "Open-source Go tool that alerts on consumer lag in Kafka and RabbitMQ; used in production by several teams."
+    }
+  ],
+  "skills": [
+    { "category": "Languages", "items": "Go, Python, SQL, TypeScript" },
+    { "category": "Infrastructure", "items": "PostgreSQL, Kafka, Redis, Docker, Kubernetes, AWS, Terraform" },
+    { "category": "Practices", "items": "API design, event-driven architecture, observability, incident response, mentoring" }
+  ],
+  "education": [
+    { "degree": "B.S. in Computer Science", "school": "Lakeshore University", "location": "Chicago, IL", "dates": "2013 - 2017" }
+  ]
+}

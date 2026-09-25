@@ -1,0 +1,14 @@
+title: Modern resume
+category: resume
+position: 2
+summary: A clean sans-serif resume with a teal accent and a skills table. Suits tech, design and startups.
+description: >-
+  A contemporary one-page layout set in Lato: a large name with your headline in the accent colour,
+  a single contact line, and a skills section laid out as a table so it scans in seconds. It takes
+  exactly the same data as the classic resume, so you can try both and keep the one you like.
+instructions: >-
+  Keep it to one page. Write each highlight as one line that starts with a verb and ends with a
+  measurable result. Group skills into three or four categories with comma-separated items. Never
+  invent employers, dates, degrees or numbers; pass an empty string for fields that do not apply.
+compiler: pdflatex
+pairs_with: [cover-letter]

@@ -1,0 +1,16 @@
+title: Academic CV
+category: resume
+position: 3
+summary: A multi-page academic CV with numbered publications, appointments, grants and teaching.
+description: >-
+  The traditional academic curriculum vitae for faculty applications, fellowships and tenure files:
+  small-caps section headings, research interests up front, numbered publications with authors,
+  year and venue in italics, and a running footer with your name and the page number. It grows to
+  as many pages as your record needs.
+instructions: >-
+  List publications newest first, with authors exactly as published and the venue as it appears in
+  the journal. Appointments and education go newest first. Keep grants and awards to one line each,
+  with the amount in the name when it is public. Never add a publication, grant or degree the person
+  did not provide.
+compiler: pdflatex
+pairs_with: []

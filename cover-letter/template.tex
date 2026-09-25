@@ -1,0 +1,39 @@
+% Cover letter - Pressa public template (MIT). https://pressa.dev/templates/cover-letter
+% Matches the classic resume, so the two read as one application.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+\frenchspacing
+
+\begin{document}
+
+{\centering
+  {\LARGE\bfseries {{ name }}}\\[3pt]
+  {{ location }} \,|\, {{ email }} \,|\, {{ phone }} \,|\, {{ website }}\par}
+\vspace{-4pt}{\color{accent}\rule{\linewidth}{0.6pt}}
+
+{{ date }}
+
+{{ recipient_name }}\\
+{{ recipient_title }}\\
+{{ company }}\\
+{{ company_address }}
+
+{{ greeting }}
+
+{% for paragraph in paragraphs %}{{ paragraph }}
+
+{% endfor %}{{ closing }}
+
+\vspace{6pt}
+{{ name }}
+
+\end{document}

@@ -1,0 +1,51 @@
+% Modern resume - Pressa public template (MIT). https://pressa.dev/templates/modern-resume
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{0F766E}
+\definecolor{muted}{HTML}{5B6472}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\titleformat{\section}{\color{accent}\bfseries\small}{}{0pt}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{13pt}{5pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=1.5pt, topsep=3pt, parsep=0pt, label={\color{accent}\textbullet}}
+
+% \job{Title}{Organization}{Dates}{Location}
+\newcommand{\job}[4]{\textbf{#1}\ \textcolor{muted}{/}\ #2 \hfill {\small\color{muted}#3}\\ {\small\color{muted}#4}\par}
+
+\begin{document}
+
+{\fontsize{25}{28}\selectfont\bfseries {{ name }}}\\[3pt]
+{\large\color{accent} {{ headline }}}\\[6pt]
+{\small\color{muted} {{ location }} \quad\textbullet\quad {{ email }} \quad\textbullet\quad {{ phone }} \quad\textbullet\quad {{ website }}}\\[-4pt]
+{\color{accent}\rule{\linewidth}{1.2pt}}
+
+\section{Profile}
+{{ summary }}
+
+\section{Experience}
+{% for job in experience %}\job{ {{- job.title -}} }{ {{- job.company -}} }{ {{- job.dates -}} }{ {{- job.location -}} }
+\begin{itemize}
+{% for point in job.highlights %}  \item {{ point }}
+{% endfor %}\end{itemize}
+\medskip
+{% endfor %}
+\section{Projects}
+{% for project in projects %}\textbf{ {{- project.name -}} }\ \textcolor{muted}{/}\ {{ project.description }}\par
+{% endfor %}
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{3.1cm}X@{}}
+{% for group in skills %}{{ group.category }} & {{ group.items }} \\[2pt]
+{% endfor %}\end{tabularx}
+
+\section{Education}
+{% for school in education %}\job{ {{- school.degree -}} }{ {{- school.school -}} }{ {{- school.dates -}} }{ {{- school.location -}} }
+{% endfor %}
+\end{document}
