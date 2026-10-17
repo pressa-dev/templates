@@ -14,3 +14,8 @@ instructions: >-
   the user for any that are missing.
 compiler: pdflatex
 pairs_with: []
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  seller: "Your business"
+  client: "Bill to"
+  tax_rate: "Tax rate (%)"

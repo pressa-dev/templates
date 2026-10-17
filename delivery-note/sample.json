@@ -1,0 +1,43 @@
+{
+  "sender": {
+    "name": "Fernwood Supply Co.",
+    "address": "220 Mill Road, Asheville, NC 28801",
+    "email": "orders@fernwood.example.com"
+  },
+  "order_number": "FW-10482",
+  "date": "October 14, 2026",
+  "ship_to": {
+    "name": "Harbor Street Cafe",
+    "address": "77 Harbor Street, Charleston, SC 29401"
+  },
+  "shipping_method": "Own van, morning delivery",
+  "tracking_number": "DN-2026-0311",
+  "items": [
+    {
+      "sku": "MUG-12-WHT",
+      "description": "Stoneware mug, 12 oz, white",
+      "quantity": 24
+    },
+    {
+      "sku": "MUG-12-SAG",
+      "description": "Stoneware mug, 12 oz, sage",
+      "quantity": 24
+    },
+    {
+      "sku": "PLT-8-WHT",
+      "description": "Side plate, 8 in, white",
+      "quantity": 36
+    },
+    {
+      "sku": "SAU-6-WHT",
+      "description": "Saucer, 6 in, white",
+      "quantity": 48
+    },
+    {
+      "sku": "CRF-1L",
+      "description": "Glass carafe, 1 litre",
+      "quantity": 6
+    }
+  ],
+  "notes": "Please check the goods on arrival, sign below and keep one copy. Report any damage to the driver before signing."
+}

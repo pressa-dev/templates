@@ -1,0 +1,72 @@
+% Delivery note - Pressa public template (MIT). https://pressa.dev/templates/delivery-note
+% Travels with the goods and is signed by whoever receives them. Same data as packing-slip.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\usepackage[margin=18mm,top=14mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{brand}{HTML}{1E3A5F}
+\definecolor{accent}{HTML}{C2410C}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{band}{HTML}{F1F5F9}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.55}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\color{ink}
+
+\begin{document}
+
+{% assign total_quantity = 0 %}{% for item in items %}{% assign total_quantity = total_quantity | plus: item.quantity %}{% endfor %}
+\noindent\colorbox{brand}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{9pt}
+  \color{white}
+  \begin{tabularx}{\linewidth}{@{\hspace{6pt}}L R@{\hspace{6pt}}}
+    {\LARGE\bfseries\mbox{}{{ sender.name }}} & {\fontsize{24}{26}\selectfont\bfseries DELIVERY NOTE} \\
+    \mbox{}{{ sender.address }} & Order No. {{ order_number }} \\
+    \mbox{}{{ sender.email }} & {{ date }}
+  \end{tabularx}\vspace{9pt}}}
+
+\vspace{16pt}
+{\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}L L@{}}
+  {\small\color{muted}DELIVER TO} & {\small\color{muted}DELIVERY} \\[-4pt]
+  {\bfseries {{ ship_to.name }}} & {{ shipping_method }} \\[-4pt]
+  {{ ship_to.address }} & {\small\textcolor{muted}{Reference: }}{{ tracking_number }}
+\end{tabularx}}
+
+\vspace{18pt}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\rowcolors{2}{band}{white}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}
+\begin{longtable}{@{\hspace{6pt}}>{\raggedright\arraybackslash}p{30mm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-12pt-4\tabcolsep-30mm-18mm\relax} >{\raggedleft\arraybackslash}p{18mm}@{\hspace{6pt}}}
+  \rowcolor{ink}\textcolor{white}{\textbf{Item no.}} & \textcolor{white}{\textbf{Description}} & \textcolor{white}{\textbf{Quantity}} \\
+\endhead
+{% for item in items %}  {{ item.sku }} & {{ item.description }} & {{ item.quantity | round: 2 }} \\
+{% endfor %}\end{longtable}}
+
+\vspace{6pt}
+\hfill\begin{tabular}{@{}l r@{\hspace{6pt}}}
+  \arrayrulecolor{accent}\hline
+  \textbf{Total quantity} & \textbf{\color{accent} {{ total_quantity | round: 2 }}} \\
+\end{tabular}
+
+\vspace{14pt}
+{\small\color{muted}NOTES}\\[-2pt]
+{\small\raggedright\mbox{}{{ notes }}\par}
+
+\vfill
+{\color{brand}\rule{\linewidth}{1pt}}\\[6pt]
+{\small Received the goods listed above in good condition.}\\[22pt]
+\begin{tabularx}{\linewidth}{@{}X@{\hspace{14pt}}X@{\hspace{14pt}}X@{}}
+  {\color{muted}\rule{\linewidth}{0.5pt}} & {\color{muted}\rule{\linewidth}{0.5pt}} & {\color{muted}\rule{\linewidth}{0.5pt}} \\[-6pt]
+  {\small\color{muted}Name} & {\small\color{muted}Signature} & {\small\color{muted}Date}
+\end{tabularx}
+
+\end{document}

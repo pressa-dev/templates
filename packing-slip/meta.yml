@@ -1,0 +1,25 @@
+title: Packing slip
+category: order
+position: 2
+summary: A packing slip for the box, with the order number, ship-to address, item numbers and quantities, and no prices.
+description: >-
+  A clean shipping document that goes inside the parcel: your business name and the order number at
+  the top, a teal rule, the ship-to address next to the shipping method and tracking number, then an
+  item table with item numbers, descriptions and quantities on alternating shaded rows. The total
+  number of items is counted from the table, and there is space for notes such as handling or
+  returns instructions. No prices, so it can travel with a gift or a wholesale order.
+instructions: >-
+  Send quantity as a number; the total item count is calculated, so never send it. sku is your item
+  or SKU number and may be empty. Leave tracking_number empty if there is none yet. Do not invent
+  addresses, order numbers or tracking numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Ship to"
+  order_number: "Order number"
+  sku: "Item no."
+  tracking_number: "Tracking number"

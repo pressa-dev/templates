@@ -1,0 +1,29 @@
+title: Purchase order
+category: order
+position: 1
+summary: A purchase order with vendor and ship-to blocks, an itemised table, and totals and tax worked out for you.
+description: >-
+  The order you send to a supplier: your business and the PO number at the top under a blue rule,
+  then the vendor, the ship-to address and the delivery date side by side, an itemised table with
+  item numbers, quantities, unit prices and amounts on alternating shaded rows, and subtotal, tax
+  and total calculated from the lines, so the numbers always add up. Terms, notes and an authorized
+  by line close the page.
+instructions: >-
+  Send quantity, unit_price and tax_rate as numbers (tax_rate in percent, e.g. 6); the template
+  computes every amount, so never send totals. currency is a code such as USD, EUR or GBP. sku may be
+  empty. Do not invent prices, vendors, addresses or who authorized the order; ask the user.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - packing-slip
+  - delivery-note
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  buyer: "Your business"
+  po_number: "PO number"
+  vendor: "Vendor"
+  ship_to: "Ship to"
+  delivery_date: "Deliver by"
+  sku: "Item no."
+  tax_rate: "Tax rate (%)"
+  authorized_by: "Authorized by"

@@ -1,0 +1,26 @@
+title: Delivery note
+category: order
+position: 3
+summary: A delivery note with a navy header, the delivery address, an item and quantity table, and lines for the receiver's name and signature.
+description: >-
+  The document that travels with the goods and comes back signed: a navy header band with your
+  business name and the order number, the delivery address next to the delivery method and a
+  reference, then an item table with item numbers, descriptions and quantities. The total quantity
+  is counted from the table. At the foot, a "received in good condition" line with spaces for the
+  receiver's name, signature and date. Takes the same details as the packing slip.
+instructions: >-
+  Send quantity as a number; the total is calculated, so never send it. sku is your item number and
+  may be empty. tracking_number is shown as the delivery reference and may be empty. Do not invent
+  addresses or order numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Deliver to"
+  order_number: "Order number"
+  sku: "Item no."
+  shipping_method: "Delivery method"
+  tracking_number: "Delivery reference"

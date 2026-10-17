@@ -1,10 +1,14 @@
 # Pressa document templates
 
-Professionally designed document templates (invoices, reports, certificates, resumes, cover letters) you can fill with data and turn into a PDF, by hand, from code, or by asking an AI assistant. Browse them with previews at **[pressa.dev/templates](https://pressa.dev/templates)**.
+Professionally designed document templates (invoices, purchase orders, packing slips, receipts, reports, certificates, resumes, cover letters) you can fill with data and turn into a PDF, by hand, from code, or by asking an AI assistant. Browse them with previews at **[pressa.dev/templates](https://pressa.dev/templates)**.
 
 | Template | What it is |
 |---|---|
 | [invoice](invoice) | Branded invoice, itemised table, totals and tax computed from the data |
+| [purchase-order](purchase-order) | Purchase order with vendor and ship-to blocks, totals and tax computed from the data |
+| [packing-slip](packing-slip) | Packing slip for the box: item numbers and quantities, no prices |
+| [delivery-note](delivery-note) | Delivery note with the same data as the packing slip and lines for the receiver's signature |
+| [cash-receipt](cash-receipt) | Cash receipt in the top half of the page, to print and cut |
 | [monthly-report](monthly-report) | Business report with KPI cards, a bar chart from your numbers and a metrics table |
 | [certificate](certificate) | Landscape certificate with a gold frame and signature lines |
 | [classic-resume](classic-resume) | One-page resume, serif typeface, blue section rules |
@@ -12,7 +16,7 @@ Professionally designed document templates (invoices, reports, certificates, res
 | [academic-cv](academic-cv) | Multi-page academic CV with numbered publications |
 | [cover-letter](cover-letter) | Cover letter that matches the classic resume |
 
-The resume templates take the same data, so you can switch style without changing a field.
+The resume templates take the same data, so you can switch style without changing a field; so do the packing slip and the delivery note. Long item lists break across pages with the table header repeated.
 
 ## Each template
 

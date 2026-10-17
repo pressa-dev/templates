@@ -1,0 +1,66 @@
+% Packing slip - Pressa public template (MIT). https://pressa.dev/templates/packing-slip
+% Goes in the box: what was ordered and what is inside, no prices. Same data as delivery-note.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\usepackage[margin=18mm,top=14mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{brand}{HTML}{0F766E}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{band}{HTML}{F0FDFA}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.55}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\color{ink}
+
+\begin{document}
+
+{% assign total_quantity = 0 %}{% for item in items %}{% assign total_quantity = total_quantity | plus: item.quantity %}{% endfor %}
+{\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}L R@{}}
+  {\LARGE\bfseries\mbox{}{{ sender.name }}} & {\fontsize{24}{26}\selectfont\bfseries\textcolor{brand}{PACKING SLIP}} \\
+  {\mbox{}\color{muted}{{ sender.address }}} & Order No. {{ order_number }} \\
+  {\mbox{}\color{muted}{{ sender.email }}} & {{ date }}
+\end{tabularx}}
+
+\vspace{4pt}
+{\color{brand}\rule{\linewidth}{1.2pt}}
+
+\vspace{14pt}
+{\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}L L@{}}
+  {\small\color{muted}SHIP TO} & {\small\color{muted}SHIPPING METHOD} \\[-4pt]
+  {\bfseries {{ ship_to.name }}} & {{ shipping_method }} \\[-4pt]
+  {{ ship_to.address }} & {\small\textcolor{muted}{Tracking: }}{{ tracking_number }}
+\end{tabularx}}
+
+\vspace{18pt}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\rowcolors{2}{band}{white}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}
+\begin{longtable}{@{\hspace{6pt}}>{\raggedright\arraybackslash}p{30mm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-12pt-4\tabcolsep-30mm-18mm\relax} >{\raggedleft\arraybackslash}p{18mm}@{\hspace{6pt}}}
+  \rowcolor{brand}\textcolor{white}{\textbf{Item no.}} & \textcolor{white}{\textbf{Description}} & \textcolor{white}{\textbf{Qty}} \\
+\endhead
+{% for item in items %}  {{ item.sku }} & {{ item.description }} & {{ item.quantity | round: 2 }} \\
+{% endfor %}\end{longtable}}
+
+\vspace{6pt}
+\hfill\begin{tabular}{@{}l r@{\hspace{6pt}}}
+  \arrayrulecolor{brand}\hline
+  \textbf{Total items} & \textbf{\color{brand} {{ total_quantity | round: 2 }}} \\
+\end{tabular}
+
+\vfill
+{\color{brand}\rule{\linewidth}{1pt}}\\[4pt]
+{\small\color{muted}NOTES}\\[-2pt]
+{\small\raggedright\mbox{}{{ notes }}\par}
+
+\end{document}

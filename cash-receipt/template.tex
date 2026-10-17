@@ -1,0 +1,67 @@
+% Cash receipt - Pressa public template (MIT). https://pressa.dev/templates/cash-receipt
+% One receipt in the top half of an A4 page, so it can be printed and cut.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\usepackage[margin=18mm,top=16mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{brand}{HTML}{047857}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{band}{HTML}{ECFDF5}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\color{ink}
+
+\begin{document}
+
+\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.8pt}
+% No line-end comment right after an opening brace here: Liquid reads it as a tag.
+\noindent\fcolorbox{brand}{white}{\parbox{\dimexpr\linewidth-2\fboxrule}{\setlength{\fboxsep}{3pt}\vspace{12pt}
+  \hspace*{14pt}\begin{minipage}{\dimexpr\linewidth-28pt}
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\linewidth}{@{}L R@{}}
+      {\Large\bfseries\mbox{}{{ business.name }}} & {\fontsize{20}{22}\selectfont\bfseries\textcolor{brand}{CASH RECEIPT}} \\
+      {\small\mbox{}\color{muted}{{ business.address }}} & No. {{ receipt_number }} \\
+      {\small\mbox{}\color{muted}{{ business.phone }}} & {{ date }}
+    \end{tabularx}
+
+    \vspace{8pt}
+    {\color{brand}\rule{\linewidth}{1pt}}
+
+    \vspace{10pt}
+    \renewcommand{\arraystretch}{1.7}
+    \begin{tabularx}{\linewidth}{@{}l X@{}}
+      {\color{muted}Received from} & {\bfseries {{ received_from }}} \\
+      {\color{muted}For} & {{ description }} \\
+      {\color{muted}Payment method} & {{ payment_method }} \\
+    \end{tabularx}
+
+    \vspace{8pt}
+    \colorbox{band}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{6pt}%
+      \hspace*{8pt}{\color{muted}Amount received}\hfill{\fontsize{22}{24}\selectfont\bfseries\color{brand} {{ amount | currency: currency }}}\hspace*{8pt}%
+      \vspace{6pt}}}
+
+    \vspace{12pt}
+    {\small\raggedright\mbox{}{{ notes }}\par}
+
+    \vspace{28pt}
+    \begin{tabularx}{\linewidth}{@{}X@{\hspace{24pt}}X@{}}
+      \mbox{}{{ received_by }} & \\[-8pt]
+      {\color{muted}\rule{\linewidth}{0.5pt}} & {\color{muted}\rule{\linewidth}{0.5pt}} \\[-8pt]
+      {\small\color{muted}Received by} & {\small\color{muted}Signature}
+    \end{tabularx}
+  \end{minipage}%
+  \vspace{14pt}%
+}}
+
+\vspace{10pt}
+{\color{muted}\scriptsize\hfill Keep this receipt for your records.}
+
+\end{document}

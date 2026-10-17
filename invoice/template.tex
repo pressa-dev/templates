@@ -1,11 +1,14 @@
 % Invoice - Pressa public template (MIT). https://pressa.dev/templates/invoice
-% Line totals, subtotal, tax and total are computed from the data.
+% Line totals, subtotal, tax and total are computed from the data, each rounded to the
+% currency's minor unit (cents, whole yen) as printed, so the printed numbers add up.
+% Unit prices keep up to 4 decimals for items priced below a cent.
 \documentclass[10pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[default]{sourcesanspro}
 \usepackage[margin=18mm,top=14mm]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{array}
 \usepackage[hidelinks]{hyperref}
 
@@ -22,7 +25,7 @@
 
 \begin{document}
 
-{% assign subtotal = 0 %}{% for item in items %}{% assign line = item.quantity | times: item.unit_price %}{% assign subtotal = subtotal | plus: line %}{% endfor %}{% assign tax = subtotal | times: tax_rate | divided_by: 100 %}{% assign total = subtotal | plus: tax %}
+{% assign d = currency | currency_decimals %}{% assign subtotal = 0 %}{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}{% assign subtotal = subtotal | plus: line %}{% endfor %}{% assign tax = subtotal | times: tax_rate | divided_by: 100.0 | round: d %}{% assign total = subtotal | plus: tax %}
 \noindent\colorbox{brand}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{9pt}
   \color{white}
   \begin{tabularx}{\linewidth}{@{\hspace{6pt}}L R@{\hspace{6pt}}}
@@ -35,21 +38,24 @@
 {\renewcommand{\arraystretch}{1.25}
 \begin{tabularx}{\linewidth}{@{}L L R@{}}
   {\small\color{muted}BILL TO} & {\small\color{muted}PAYMENT DUE} & {\small\color{muted}AMOUNT DUE} \\[-4pt]
-  \textbf{ {{- client.name -}} } & \textbf{ {{- due_date -}} } & {\Large\bfseries\color{brand} {{ total | currency: currency }}} \\[-4pt]
+  {\bfseries {{ client.name }}} & {\bfseries {{ due_date }}} & {\Large\bfseries\color{brand} {{ total | currency: currency }}} \\[-4pt]
   {{ client.address }} & {{ payment_terms }} & {\small\color{muted}{{ currency }}}
 \end{tabularx}}
 
 \vspace{18pt}
-{\rowcolors{2}{band}{white}
-\begin{tabularx}{\linewidth}{@{\hspace{6pt}}X r r r@{\hspace{6pt}}}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\rowcolors{2}{band}{white}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}
+\begin{longtable}{@{\hspace{6pt}}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-12pt-6\tabcolsep-12mm-24mm-24mm\relax} >{\raggedleft\arraybackslash}p{12mm} >{\raggedleft\arraybackslash}p{24mm} >{\raggedleft\arraybackslash}p{24mm}@{\hspace{6pt}}}
   \rowcolor{ink}\textcolor{white}{\textbf{Description}} & \textcolor{white}{\textbf{Qty}} & \textcolor{white}{\textbf{Unit price}} & \textcolor{white}{\textbf{Amount}} \\
-{% for item in items %}{% assign line = item.quantity | times: item.unit_price %}  {{ item.description }} & {{ item.quantity | round: 2 }} & {{ item.unit_price | currency: currency }} & {{ line | currency: currency }} \\
-{% endfor %}\end{tabularx}}
+\endhead
+{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}  {{ item.description }} & {{ item.quantity | round: 2 }} & {{ price | currency: currency, 4 }} & {{ line | currency: currency }} \\
+{% endfor %}\end{longtable}}
 
 \vspace{6pt}
 \hfill\begin{tabular}{@{}l r@{\hspace{6pt}}}
   {\color{muted}Subtotal} & {{ subtotal | currency: currency }} \\
-  {\color{muted}Tax ({{ tax_rate | round: 2 }}\%)} & {{ tax | currency: currency }} \\
+  {\color{muted}Tax ({{ tax_rate }}\%)} & {{ tax | currency: currency }} \\
   \arrayrulecolor{brand}\hline
   \textbf{Total} & \textbf{\color{brand} {{ total | currency: currency }}} \\
 \end{tabular}
