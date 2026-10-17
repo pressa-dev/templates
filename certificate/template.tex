@@ -26,14 +26,14 @@
     \fill[gold] (\x,\y) circle (2.2pt);
   \node[anchor=center, text width=0.78\linewidth, align=center, execute at begin node={\hyphenpenalty=10000}] at (0.5\linewidth, 0.5\textheight-6pt) {
     {\color{navy}\cinzel\Large\textls[180]{ {{- organization -}} }}\\[24pt]
-    {\color{gold}\cinzelblack\fontsize{40}{46}\selectfont\spaceskip=0.32em\relax {{ title }}}\\[20pt]
-    {\color{navy}\Large\itshape {{ intro }}}\\[14pt]
-    {\color{navy}\fontsize{42}{48}\selectfont\spaceskip=0.28em\relax {{ recipient }}}\\[6pt]
+    {\color{gold}\cinzelblack\fontsize{40}{46}\selectfont\spaceskip=0.32em\relax\mbox{}{{ title }}}\\[20pt]
+    {\color{navy}\Large\itshape\mbox{}{{ intro }}}\\[14pt]
+    {\color{navy}\fontsize{42}{48}\selectfont\spaceskip=0.28em\relax\mbox{}{{ recipient }}}\\[6pt]
     {\color{gold}\rule{0.45\linewidth}{0.8pt}}\\[12pt]
-    {\color{navy}\Large {{ achievement }}}\\[40pt]
+    {\color{navy}\Large\mbox{}{{ achievement }}}\\[40pt]
     {% for signer in signatures %}\begin{minipage}[t]{0.3\linewidth}\centering
       {\color{navy}\rule{\linewidth}{0.5pt}}\\[4pt]
-      {\color{navy}\large {{ signer.name }}}\\
+      {\color{navy}\large\mbox{}{{ signer.name }}}\\
       {\color{navy}\itshape {{ signer.role }}}
     \end{minipage}{% unless forloop.last %}\hspace{0.08\linewidth}{% endunless %}{% endfor %}\\[32pt]
     {\color{navy} {{ date }} \quad\textbullet\quad Certificate No. {{ certificate_id }}}
