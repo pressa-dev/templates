@@ -32,9 +32,9 @@
 
 \section{Experience}
 {% for job in experience %}\job{ {{- job.title -}} }{ {{- job.company -}} }{ {{- job.dates -}} }{ {{- job.location -}} }
-\begin{itemize}
+{% if job.highlights.size > 0 %}\begin{itemize}
 {% for point in job.highlights %}  \item {{ point }}
-{% endfor %}\end{itemize}
+{% endfor %}\end{itemize}{% endif %}
 \medskip
 {% endfor %}
 \section{Projects}

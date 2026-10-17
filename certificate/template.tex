@@ -31,11 +31,11 @@
     {\color{navy}\fontsize{42}{48}\selectfont\spaceskip=0.28em\relax\mbox{}{{ recipient }}}\\[6pt]
     {\color{gold}\rule{0.45\linewidth}{0.8pt}}\\[12pt]
     {\color{navy}\Large\mbox{}{{ achievement }}}\\[40pt]
-    {% for signer in signatures %}\begin{minipage}[t]{0.3\linewidth}\centering
+    {% if signatures.size > 0 %}{% for signer in signatures %}\begin{minipage}[t]{0.3\linewidth}\centering
       {\color{navy}\rule{\linewidth}{0.5pt}}\\[4pt]
       {\color{navy}\large\mbox{}{{ signer.name }}}\\
       {\color{navy}\itshape {{ signer.role }}}
-    \end{minipage}{% unless forloop.last %}\hspace{0.08\linewidth}{% endunless %}{% endfor %}\\[32pt]
+    \end{minipage}{% unless forloop.last %}\hspace{0.08\linewidth}{% endunless %}{% endfor %}\\[32pt]{% endif %}
     {\color{navy} {{ date }} \quad\textbullet\quad Certificate No. {{ certificate_id }}}
   };
 \end{tikzpicture}

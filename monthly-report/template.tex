@@ -79,16 +79,16 @@
 \end{tabularx}}
 
 \begin{minipage}[t]{0.48\linewidth}
-\section{Highlights}
+{% if highlights.size > 0 %}\section{Highlights}
 \begin{itemize}
 {% for item in highlights %}  \item {{ item }}
-{% endfor %}\end{itemize}
+{% endfor %}\end{itemize}{% endif %}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.48\linewidth}
-\section{Next steps}
+{% if next_steps.size > 0 %}\section{Next steps}
 \begin{itemize}
 {% for item in next_steps %}  \item {{ item }}
-{% endfor %}\end{itemize}
+{% endfor %}\end{itemize}{% endif %}
 \end{minipage}
 
 \end{document}

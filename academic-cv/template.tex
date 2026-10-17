@@ -41,10 +41,10 @@
 \section{Education}
 {% for degree in education %}\entry{ {{- degree.degree -}} }{ {{- degree.school -}} }{ {{- degree.year -}} }
 {% endfor %}
-\section{Publications}
+{% if publications.size > 0 %}\section{Publications}
 \begin{enumerate}
 {% for paper in publications %}  \item {{ paper.authors }} ({{ paper.year }}). {{ paper.title }}. \textit{ {{- paper.venue -}} }.
-{% endfor %}\end{enumerate}
+{% endfor %}\end{enumerate}{% endif %}
 
 \section{Grants and awards}
 {% for award in awards %}{{ award.name }} \hfill {{ award.year }}\par
