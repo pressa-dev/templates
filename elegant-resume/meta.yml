@@ -1,0 +1,23 @@
+title: Elegant resume
+category: resume
+position: 5
+summary: A refined serif resume with small-caps headings in the margin. Suits law, finance, academia and senior roles.
+description: >-
+  A quiet, editorial layout set in EB Garamond: your name in large small capitals across the top
+  above a fine rule, section headings in small capitals in the left margin, and the content in a
+  calm column beside them. It takes exactly the same data as the other resume designs.
+instructions: >-
+  Keep it to one page for up to about ten years of experience. Write each highlight as one line
+  that starts with a verb and ends with a result. Never invent employers, dates, degrees or numbers;
+  pass an empty string for fields that do not apply.
+compiler: pdflatex
+pairs_with: [cover-letter]
+document: resume
+design: Elegant
+# Accent colours, name: hex. The first is the one template.tex defines.
+colors:
+  burgundy: "8B1E3F"
+  navy: "1F4E79"
+  teal: "0F766E"
+  forest: "2D6A4F"
+  graphite: "374151"

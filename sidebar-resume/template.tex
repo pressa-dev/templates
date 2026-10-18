@@ -1,0 +1,78 @@
+% Sidebar resume - Pressa public template (MIT). https://pressa.dev/templates/resume?design=sidebar-resume
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
+\usepackage[left=3.0in,right=0.65in,top=0.65in,bottom=0.7in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{0F766E}
+\definecolor{ink}{HTML}{1F2933}
+\definecolor{muted}{HTML}{5B6472}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\titleformat{\section}{\color{accent}\bfseries\large}{}{0pt}{}[\vspace{-2pt}\textcolor{accent}{\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\setlist[itemize]{leftmargin=1.05em, itemsep=1.5pt, topsep=3pt, parsep=0pt, label={\color{accent}\textbullet}}
+
+% The coloured column runs down the left of every page; the main text sits to
+% its right through the left margin, so it breaks across pages like any text.
+\newlength{\sidebarwidth}
+\setlength{\sidebarwidth}{2.55in}
+\AddToShipoutPictureBG{\AtPageLowerLeft{\textcolor{accent}{\rule{\sidebarwidth}{\paperheight}}}}
+\newsavebox{\sidebarbox}
+% Room for the column's text: the page less its top and bottom space.
+\newlength{\sidebarroom}
+\setlength{\sidebarroom}{\dimexpr\paperheight-0.62in-0.6in\relax}
+
+% \sidelabel{Contact}: a heading in the column.
+\newcommand{\sidelabel}[1]{\par\vspace{14pt}{\footnotesize\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\textcolor{white}{\rule{1.6em}{0.8pt}}\par\vspace{4pt}}
+% \job{Title}{Organization}{Dates}{Location}
+\newcommand{\job}[4]{\textbf{#1}\hfill\textcolor{muted}{\small #3}\\\textcolor{accent}{#2}\hfill\textcolor{muted}{\small #4}\par}
+
+\begin{document}
+\color{ink}\RaggedRight\hyphenpenalty=10000\relax
+% The column's text, on the first page only: contact, skills, education.
+% Set in a box first: when it is taller than the page has room for, the
+% whole column is scaled down to fit instead of running off the bottom.
+\sbox{\sidebarbox}{\parbox[t]{\dimexpr\sidebarwidth-0.76in\relax}{\raggedright\color{white}\small
+  \sidelabel{Contact}
+  \mbox{}{{ location }}\par\smallskip
+  \mbox{}{{ email }}\par\smallskip
+  \mbox{}{{ phone }}\par\smallskip
+  \mbox{}{{ website }}\par
+  \sidelabel{Skills}
+  {% for group in skills %}\textbf{ {{- group.category -}} }\par\vspace{1pt}{\footnotesize {{ group.items }}}\par{% unless forloop.last %}\medskip{% endunless %}
+  {% endfor %}
+  \sidelabel{Education}
+  {% for school in education %}\textbf{ {{- school.degree -}} }\par{\footnotesize\mbox{}{{ school.school }}\par\mbox{}{{ school.location }} \textperiodcentered{} {{ school.dates }}}\par{% unless forloop.last %}\medskip{% endunless %}
+  {% endfor %}
+}}
+\ifdim\dimexpr\ht\sidebarbox+\dp\sidebarbox\relax>\sidebarroom
+  \sbox{\sidebarbox}{\resizebox*{!}{\sidebarroom}{\usebox{\sidebarbox}}}
+\fi
+\AddToShipoutPictureFG*{\AtPageUpperLeft{\hspace*{0.38in}\raisebox{\dimexpr-\ht\sidebarbox-0.62in\relax}{\usebox{\sidebarbox}}}}
+
+% Ragged, not justified: a long name wraps instead of running off the page.
+{\raggedright\fontsize{26}{30}\selectfont\bfseries\mbox{}{{ name }}\par}\vspace{4pt}
+{\raggedright\large\color{accent}\mbox{}{{ headline }}\par}
+
+\section{Profile}
+{{ summary }}
+
+\section{Experience}
+{% for job in experience %}\job{ {{- job.title -}} }{ {{- job.company -}} }{ {{- job.dates -}} }{ {{- job.location -}} }
+{% if job.highlights.size > 0 %}\begin{itemize}
+{% for point in job.highlights %}  \item {{ point }}
+{% endfor %}\end{itemize}{% endif %}
+\medskip
+{% endfor %}
+\section{Projects}
+{% for project in projects %}\textbf{ {{- project.name -}} }\par {{ project.description }}\par\smallskip
+{% endfor %}
+\end{document}

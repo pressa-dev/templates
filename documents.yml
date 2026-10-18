@@ -1,0 +1,13 @@
+# Page copy for documents with several designs (pressa.dev/templates/<document>).
+# Each design is a folder with `document: <key>` in its meta.yml; a document
+# with one design uses that template's title, summary and description.
+resume:
+  title: Resume
+  summary: >-
+    One-page resumes in five designs, from a classic serif layout to a bold header and a
+    sidebar, each in five colours.
+  description: >-
+    Every design takes exactly the same details, so you can type once and switch between them
+    until one feels right: the classic serif layout recruiters and applicant tracking systems read
+    without trouble, a clean modern sans-serif, a bold coloured header, a two-column layout with a
+    sidebar, and an elegant layout with the headings in the margin. Each comes in five colours.

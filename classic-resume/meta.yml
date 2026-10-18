@@ -5,8 +5,8 @@ summary: A one-page resume in a serif typeface with blue section rules. Safe for
 description: >-
   A calm, traditional layout that recruiters and applicant tracking systems read without trouble:
   name and contact details centred at the top, then summary, experience, projects, skills and
-  education. Every resume template in the gallery takes the same data, so you can switch styles
-  without changing a single field.
+  education. Every resume design takes the same data, so you can switch designs without
+  changing a single field.
 instructions: >-
   Keep it to one page for up to about ten years of experience. Write each highlight as one line
   that starts with a verb and ends with a result, with a number where there is one. Put the most
@@ -14,3 +14,12 @@ instructions: >-
   pass an empty string rather than making something up.
 compiler: pdflatex
 pairs_with: [cover-letter]
+document: resume
+design: Classic
+# Accent colours, name: hex. The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

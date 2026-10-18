@@ -1,0 +1,61 @@
+% Banner resume - Pressa public template (MIT). https://pressa.dev/templates/resume?design=banner-resume
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[left=0.75in,right=0.75in,top=0.6in,bottom=0.7in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{ink}{HTML}{1F2933}
+\definecolor{muted}{HTML}{5B6472}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcommand{\bannerheading}[1]{\textcolor{accent}{\rule[-0.2ex]{3pt}{2.1ex}}\hspace{7pt}\MakeUppercase{#1}}
+\titleformat{\section}{\color{accent}\bfseries\normalsize}{}{0pt}{\bannerheading}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=1.5pt, topsep=3pt, parsep=0pt, label={\color{accent}\textbullet}}
+
+% \entry{Title}{Organization}{Dates}{Location}
+\newcommand{\entry}[4]{\textbf{#1}\hfill\textcolor{muted}{\small #3}\\\textcolor{accent}{#2}\hfill\textcolor{muted}{\small #4}\par}
+
+\begin{document}
+\color{ink}
+% The band runs edge to edge and grows with its text: page margins are
+% undone on the left and at the top.
+\vspace*{-\dimexpr0.6in+\topskip\relax}
+\noindent\hspace*{-0.75in}{\setlength{\fboxsep}{0pt}\colorbox{accent}{\parbox{\paperwidth}{\relax
+  \vspace*{0.42in}%
+  \hspace*{0.75in}\parbox{\dimexpr\paperwidth-1.5in\relax}{\raggedright\color{white}
+    {\fontsize{28}{32}\selectfont\bfseries\mbox{}{{ name }}}\\[5pt]
+    {\large\mbox{}{{ headline }}}\\[9pt]
+    {\small\mbox{}{{ location }} \quad\textbar\quad {{ email }} \quad\textbar\quad {{ phone }} \quad\textbar\quad {{ website }}}%
+  }%
+  \vspace*{0.34in}%
+}}}
+
+\section{Profile}
+{{ summary }}
+
+\section{Experience}
+{% for job in experience %}\entry{ {{- job.title -}} }{ {{- job.company -}} }{ {{- job.dates -}} }{ {{- job.location -}} }
+{% if job.highlights.size > 0 %}\begin{itemize}
+{% for point in job.highlights %}  \item {{ point }}
+{% endfor %}\end{itemize}{% endif %}
+\medskip
+{% endfor %}
+\section{Projects}
+{% for project in projects %}{\bfseries\mbox{}{{ project.name }}}\ {\color{muted}\textbar}\ {{ project.description }}\par
+{% endfor %}
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{1.3in}X@{}}
+{% for group in skills %}\textcolor{accent}{ {{- group.category -}} } & {{ group.items }} \\[2pt]
+{% endfor %}\end{tabularx}
+\section{Education}
+{% for school in education %}\entry{ {{- school.degree -}} }{ {{- school.school -}} }{ {{- school.dates -}} }{ {{- school.location -}} }
+\smallskip
+{% endfor %}
+\end{document}

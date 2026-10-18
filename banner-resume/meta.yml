@@ -1,0 +1,25 @@
+title: Banner resume
+category: resume
+position: 3
+summary: A resume with your name in a bold coloured band across the top and clear section markers. Stands out without shouting.
+description: >-
+  A confident one-page layout in Source Sans: your name, headline and contact details in white on a
+  full-width colour band, then sections marked with a small accent bar, highlights with coloured
+  bullets and employers in the accent colour. It takes exactly the same data as the other resume
+  designs.
+instructions: >-
+  Keep it to one page. Write each highlight as one line that starts with a verb and ends with a
+  measurable result. Keep the headline short (a job title) so it fits on one line in the band.
+  Never invent employers, dates, degrees or numbers; pass an empty string for fields that do not
+  apply.
+compiler: pdflatex
+pairs_with: [cover-letter]
+document: resume
+design: Banner
+# Accent colours, name: hex. The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

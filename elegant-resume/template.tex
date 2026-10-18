@@ -1,0 +1,57 @@
+% Elegant resume - Pressa public template (MIT). https://pressa.dev/templates/resume?design=elegant-resume
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[lining]{ebgaramond}
+\usepackage[left=2.15in,right=0.75in,top=0.7in,bottom=0.7in]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{8B1E3F}
+\definecolor{ink}{HTML}{222222}
+\definecolor{muted}{HTML}{6B6B6B}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+% Section headings sit in the left margin, level with the first line of
+% their section.
+\newlength{\headingwidth}
+\setlength{\headingwidth}{1.2in}
+\titleformat{\section}[leftmargin]{\normalfont\scshape\color{accent}\filleft}{}{0pt}{\MakeLowercase}
+\titlespacing*{\section}{\headingwidth}{12pt}{0.2in}
+\setlist[itemize]{leftmargin=1em, itemsep=1pt, topsep=2pt, parsep=0pt, label={\textcolor{accent}{\textendash}}}
+
+% \role{Title}{Organization}{Dates}{Location}
+\newcommand{\role}[4]{\textbf{#1}\hfill\textcolor{muted}{#3}\\\textit{#2}\hfill\textcolor{muted}{\small #4}\par}
+
+\begin{document}
+\color{ink}
+% The header spans the whole page width, margin column included.
+\noindent\hspace*{-1.4in}\parbox{\dimexpr\linewidth+1.4in\relax}{\raggedright
+  {\fontsize{30}{34}\selectfont\scshape\mbox{}{{ name }}}\par\vspace{2pt}
+  {\large\itshape\color{accent}\mbox{}{{ headline }}}\par\vspace{6pt}
+  \textcolor{accent}{\rule{\linewidth}{0.6pt}}\par\vspace{4pt}
+  {\small\mbox{}{{ location }} \quad\textperiodcentered\quad {{ email }} \quad\textperiodcentered\quad {{ phone }} \quad\textperiodcentered\quad {{ website }}}\par
+}
+
+\section{Profile}
+{{ summary }}
+
+\section{Experience}
+{% for job in experience %}\role{ {{- job.title -}} }{ {{- job.company -}} }{ {{- job.dates -}} }{ {{- job.location -}} }
+{% if job.highlights.size > 0 %}\begin{itemize}
+{% for point in job.highlights %}  \item {{ point }}
+{% endfor %}\end{itemize}{% endif %}
+\medskip
+{% endfor %}
+\section{Projects}
+{% for project in projects %}\textbf{ {{- project.name -}} }\quad {{ project.description }}\par\smallskip
+{% endfor %}
+\section{Skills}
+{% for group in skills %}\textit{ {{- group.category -}} }\quad {{ group.items }}\par\smallskip
+{% endfor %}
+\section{Education}
+{% for school in education %}\role{ {{- school.degree -}} }{ {{- school.school -}} }{ {{- school.dates -}} }{ {{- school.location -}} }
+\smallskip
+{% endfor %}
+\end{document}

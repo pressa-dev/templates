@@ -1,0 +1,25 @@
+title: Sidebar resume
+category: resume
+position: 4
+summary: A two-column resume with a coloured sidebar for contact details, skills and education. Modern and easy to scan.
+description: >-
+  A contemporary layout set in Raleway: a full-height colour column down the left holds your
+  contact details, skills and education, and the wide main column carries your name, profile,
+  experience and projects. Long experience simply continues on a second page. It takes exactly the
+  same data as the other resume designs.
+instructions: >-
+  Keep it to one page. Keep skills short (three or four groups of a few items) and education to
+  one or two entries, because they sit in the narrow sidebar. Write each highlight as one line that
+  starts with a verb and ends with a measurable result. Never invent employers, dates, degrees or
+  numbers; pass an empty string for fields that do not apply.
+compiler: pdflatex
+pairs_with: [cover-letter]
+document: resume
+design: Sidebar
+# Accent colours, name: hex. The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

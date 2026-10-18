@@ -1,4 +1,4 @@
-% Modern resume - Pressa public template (MIT). https://pressa.dev/templates/modern-resume
+% Modern resume - Pressa public template (MIT). https://pressa.dev/templates/resume?design=modern-resume
 \documentclass[10pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[default]{lato}
@@ -22,10 +22,12 @@
 
 \begin{document}
 
+% Ragged, not justified: a long name wraps instead of running off the page.
+{\raggedright
 {\fontsize{25}{28}\selectfont\bfseries\mbox{}{{ name }}}\\[3pt]
 {\large\color{accent} {{ headline }}}\\[6pt]
 {\small\color{muted} {{ location }} \quad\textbullet\quad {{ email }} \quad\textbullet\quad {{ phone }} \quad\textbullet\quad {{ website }}}\\[-4pt]
-{\color{accent}\rule{\linewidth}{1.2pt}}
+{\color{accent}\rule{\linewidth}{1.2pt}}\par}
 
 \section{Profile}
 {{ summary }}

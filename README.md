@@ -13,10 +13,13 @@ Professionally designed document templates (invoices, purchase orders, packing s
 | [certificate](certificate) | Landscape certificate with a gold frame and signature lines |
 | [classic-resume](classic-resume) | One-page resume, serif typeface, blue section rules |
 | [modern-resume](modern-resume) | One-page resume, sans-serif, teal accent, skills table |
+| [banner-resume](banner-resume) | Resume with your name in a full-width colour band |
+| [sidebar-resume](sidebar-resume) | Two-column resume with a colour sidebar for contact, skills and education |
+| [elegant-resume](elegant-resume) | Serif resume with small-caps headings in the margin |
 | [academic-cv](academic-cv) | Multi-page academic CV with numbered publications |
 | [cover-letter](cover-letter) | Cover letter that matches the classic resume |
 
-The resume templates take the same data, so you can switch style without changing a field; so do the packing slip and the delivery note. Long item lists break across pages with the table header repeated.
+The five resume designs (classic, modern, banner, sidebar, elegant) take the same data, so you can switch design without changing a field; so do the packing slip and the delivery note. Designs with a `colors` list in `meta.yml` print in any of those colours: send `"color": "navy"` next to `data`. Long item lists break across pages with the table header repeated.
 
 ## Each template
 
