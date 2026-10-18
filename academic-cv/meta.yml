@@ -1,4 +1,4 @@
-title: Academic CV
+title: Traditional academic CV
 category: resume
 position: 10
 summary: A multi-page academic CV with numbered publications, appointments, grants and teaching.
@@ -14,3 +14,12 @@ instructions: >-
   did not provide.
 compiler: pdflatex
 pairs_with: []
+document: academic-cv
+design: Traditional
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  black: "000000"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  teal: "0F766E"

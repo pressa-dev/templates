@@ -1,25 +1,21 @@
 # Pressa document templates
 
-Professionally designed document templates (invoices, purchase orders, packing slips, receipts, reports, certificates, resumes, cover letters) you can fill with data and turn into a PDF, by hand, from code, or by asking an AI assistant. Browse them with previews at **[pressa.dev/templates](https://pressa.dev/templates)**.
+Professionally designed document templates (invoices, purchase orders, packing slips, delivery notes, receipts, reports, certificates, resumes, academic CVs and cover letters, 50 designs in all) you can fill with data and turn into a PDF, by hand, from code, or by asking an AI assistant. Browse them with previews at **[pressa.dev/templates](https://pressa.dev/templates)**.
 
-| Template | What it is |
+| Document | Designs (folder) |
 |---|---|
-| [invoice](invoice) | Branded invoice, itemised table, totals and tax computed from the data |
-| [purchase-order](purchase-order) | Purchase order with vendor and ship-to blocks, totals and tax computed from the data |
-| [packing-slip](packing-slip) | Packing slip for the box: item numbers and quantities, no prices |
-| [delivery-note](delivery-note) | Delivery note with the same data as the packing slip and lines for the receiver's signature |
-| [cash-receipt](cash-receipt) | Cash receipt in the top half of the page, to print and cut |
-| [monthly-report](monthly-report) | Business report with KPI cards, a bar chart from your numbers and a metrics table |
-| [certificate](certificate) | Landscape certificate with a gold frame and signature lines |
-| [classic-resume](classic-resume) | One-page resume, serif typeface, blue section rules |
-| [modern-resume](modern-resume) | One-page resume, sans-serif, teal accent, skills table |
-| [banner-resume](banner-resume) | Resume with your name in a full-width colour band |
-| [sidebar-resume](sidebar-resume) | Two-column resume with a colour sidebar for contact, skills and education |
-| [elegant-resume](elegant-resume) | Serif resume with small-caps headings in the margin |
-| [academic-cv](academic-cv) | Multi-page academic CV with numbered publications |
-| [cover-letter](cover-letter) | Cover letter that matches the classic resume |
+| [Invoice](https://pressa.dev/templates/invoice) | Bold ([invoice](invoice)), Classic ([classic-invoice](classic-invoice)), Minimal ([minimal-invoice](minimal-invoice)), Modern ([modern-invoice](modern-invoice)), Corporate ([corporate-invoice](corporate-invoice)) |
+| [Purchase order](https://pressa.dev/templates/purchase-order) | Standard ([purchase-order](purchase-order)), Bold ([bold-purchase-order](bold-purchase-order)), Classic ([classic-purchase-order](classic-purchase-order)), Minimal ([minimal-purchase-order](minimal-purchase-order)), Corporate ([corporate-purchase-order](corporate-purchase-order)) |
+| [Packing slip](https://pressa.dev/templates/packing-slip) | Standard ([packing-slip](packing-slip)), Bold ([bold-packing-slip](bold-packing-slip)), Classic ([classic-packing-slip](classic-packing-slip)), Minimal ([minimal-packing-slip](minimal-packing-slip)), Corporate ([corporate-packing-slip](corporate-packing-slip)) |
+| [Delivery note](https://pressa.dev/templates/delivery-note) | Bold ([delivery-note](delivery-note)), Standard ([standard-delivery-note](standard-delivery-note)), Classic ([classic-delivery-note](classic-delivery-note)), Minimal ([minimal-delivery-note](minimal-delivery-note)), Corporate ([corporate-delivery-note](corporate-delivery-note)) |
+| [Cash receipt](https://pressa.dev/templates/cash-receipt) | Framed ([cash-receipt](cash-receipt)), Bold ([bold-cash-receipt](bold-cash-receipt)), Classic ([classic-cash-receipt](classic-cash-receipt)), Minimal ([minimal-cash-receipt](minimal-cash-receipt)), Corporate ([corporate-cash-receipt](corporate-cash-receipt)) |
+| [Monthly report](https://pressa.dev/templates/monthly-report) | Standard ([monthly-report](monthly-report)), Bold ([bold-monthly-report](bold-monthly-report)), Executive ([executive-monthly-report](executive-monthly-report)), Minimal ([minimal-monthly-report](minimal-monthly-report)), Corporate ([corporate-monthly-report](corporate-monthly-report)) |
+| [Certificate](https://pressa.dev/templates/certificate) | Classic ([certificate](certificate)), Modern ([modern-certificate](modern-certificate)), Minimal ([minimal-certificate](minimal-certificate)), Bold ([bold-certificate](bold-certificate)), Elegant ([elegant-certificate](elegant-certificate)) |
+| [Resume](https://pressa.dev/templates/resume) | Classic ([classic-resume](classic-resume)), Modern ([modern-resume](modern-resume)), Banner ([banner-resume](banner-resume)), Sidebar ([sidebar-resume](sidebar-resume)), Elegant ([elegant-resume](elegant-resume)) |
+| [Academic CV](https://pressa.dev/templates/academic-cv) | Traditional ([academic-cv](academic-cv)), Classic ([classic-academic-cv](classic-academic-cv)), Modern ([modern-academic-cv](modern-academic-cv)), Elegant ([elegant-academic-cv](elegant-academic-cv)), Timeline ([timeline-academic-cv](timeline-academic-cv)) |
+| [Cover letter](https://pressa.dev/templates/cover-letter) | Classic ([cover-letter](cover-letter)), Modern ([modern-cover-letter](modern-cover-letter)), Banner ([banner-cover-letter](banner-cover-letter)), Sidebar ([sidebar-cover-letter](sidebar-cover-letter)), Elegant ([elegant-cover-letter](elegant-cover-letter)) |
 
-The five resume designs (classic, modern, banner, sidebar, elegant) take the same data, so you can switch design without changing a field; so do the packing slip and the delivery note. Designs with a `colors` list in `meta.yml` print in any of those colours: send `"color": "navy"` next to `data`. Long item lists break across pages with the table header repeated.
+Every document comes in five designs, and every design in five colours. The designs of one document take exactly the same data, so you can switch design without changing a field; so do the packing slip and the delivery note. The business documents share design names (Bold, Classic, Minimal, Corporate...), so an invoice, a purchase order and a packing slip can match, and each cover letter matches the resume design of the same name. Send `"color"` next to `data` to print a design in another of the colours its `meta.yml` lists. Long item lists break across pages with the table header repeated.
 
 ## Each template
 

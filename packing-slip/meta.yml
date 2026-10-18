@@ -1,6 +1,6 @@
-title: Packing slip
+title: Standard packing slip
 category: order
-position: 2
+position: 1
 summary: A packing slip for the box, with the order number, ship-to address, item numbers and quantities, and no prices.
 description: >-
   A clean shipping document that goes inside the parcel: your business name and the order number at
@@ -16,6 +16,15 @@ compiler: pdflatex
 pairs_with:
   - invoice
   - purchase-order
+document: packing-slip
+design: Standard
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  blue: "1D4ED8"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  graphite: "374151"
 # Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
 labels:
   sender: "Your business"

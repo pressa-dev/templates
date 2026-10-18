@@ -1,0 +1,31 @@
+title: Minimal delivery note
+category: order
+position: 4
+summary: A quiet, airy delivery note in Helvetica with hairline rules and one accent colour.
+description: >-
+  A delivery note with a quiet Helvetica layout with generous white space, the key details in one row, hairline rules and only the total quantity in colour. It takes exactly the same data as the other delivery note designs.
+instructions: >-
+  Send quantity as a number; the total is calculated, so never send it. sku is your item number and
+  may be empty. tracking_number is shown as the delivery reference and may be empty. Do not invent
+  addresses or order numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+document: delivery-note
+design: Minimal
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  blue: "1D4ED8"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Deliver to"
+  order_number: "Order number"
+  sku: "Item no."
+  shipping_method: "Delivery method"
+  tracking_number: "Delivery reference"

@@ -1,0 +1,48 @@
+% Modern certificate - Pressa public template (MIT). https://pressa.dev/templates/certificate?design=modern-certificate
+% Drawn in the normal flow with a fixed bounding box, so one compile pass is enough
+% and the page never spills onto a second one. Each size change inside a node sets
+% \spaceskip again: TikZ fixes it from the node's starting font, which made the
+% spaces in large lines almost vanish.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[a4paper,landscape,margin=12mm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% `accent` is the colour a visitor can change.
+\definecolor{accent}{HTML}{0F766E}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\frenchspacing
+
+\begin{document}
+\centering
+\noindent\begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle (\linewidth, \textheight-12pt);
+  % A colour panel down the left third.
+  \fill[accent] (0,0) rectangle (0.3\linewidth, \textheight-12pt);
+  \node[anchor=north west, text width=0.3\linewidth-36pt, align=left, text=white] at (18pt, \textheight-48pt) {
+    {\small\bfseries\MakeUppercase{ {{- organization -}} }}\\[10pt]
+    {\color{white}\rule{24pt}{1.2pt}}
+  };
+  \node[anchor=south west, text width=0.3\linewidth-36pt, align=left, text=white] at (18pt, 30pt) {
+    {\small\spaceskip=0.3em\relax\mbox{}{{ date }}}\\[3pt]
+    {\small No. {{ certificate_id }}}
+  };
+  \node[anchor=west, text width=0.62\linewidth, align=left, text=ink, execute at begin node={\hyphenpenalty=10000}] at (0.35\linewidth, 0.5\textheight-6pt) {
+    {\color{accent}\fontsize{34}{40}\selectfont\spaceskip=0.3em\relax\bfseries\mbox{}{{ title }}}\\[18pt]
+    {\large\color{muted}\mbox{}{{ intro }}}\\[8pt]
+    {\fontsize{38}{44}\selectfont\spaceskip=0.3em\relax\mbox{}{{ recipient }}}\\[10pt]
+    {\color{accent}\rule{60pt}{2pt}}\\[12pt]
+    {\large\spaceskip=0.3em\relax\mbox{}{{ achievement }}}\\[34pt]
+    {% if signatures.size > 0 %}{% for signer in signatures %}\begin{minipage}[t]{0.28\linewidth}\raggedright
+      {\color{ink!50}\rule{\linewidth}{0.5pt}}\\[4pt]
+      {\large\spaceskip=0.3em\relax\mbox{}{{ signer.name }}}\\
+      {\small\color{muted}\mbox{}{{ signer.role }}}
+    \end{minipage}{% unless forloop.last %}\hspace{0.06\linewidth}{% endunless %}{% endfor %}\\[26pt]{% endif %}
+  };
+\end{tikzpicture}
+\end{document}

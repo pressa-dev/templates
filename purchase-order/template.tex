@@ -12,10 +12,11 @@
 \usepackage{array}
 \usepackage[hidelinks]{hyperref}
 
-\definecolor{brand}{HTML}{1D4ED8}
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{1D4ED8}
 \definecolor{ink}{HTML}{1F2937}
 \definecolor{muted}{HTML}{6B7280}
-\definecolor{band}{HTML}{EFF6FF}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \renewcommand{\arraystretch}{1.55}
@@ -28,13 +29,13 @@
 {% assign d = currency | currency_decimals %}{% assign subtotal = 0 %}{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}{% assign subtotal = subtotal | plus: line %}{% endfor %}{% assign tax = subtotal | times: tax_rate | divided_by: 100.0 | round: d %}{% assign total = subtotal | plus: tax %}
 {\renewcommand{\arraystretch}{1.2}
 \begin{tabularx}{\linewidth}{@{}L R@{}}
-  {\LARGE\bfseries\mbox{}{{ buyer.name }}} & {\fontsize{24}{26}\selectfont\bfseries\textcolor{brand}{PURCHASE ORDER}} \\
+  {\LARGE\bfseries\mbox{}{{ buyer.name }}} & {\fontsize{24}{26}\selectfont\bfseries\textcolor{accent}{PURCHASE ORDER}} \\
   {\mbox{}\color{muted}{{ buyer.address }}} & PO No. {{ po_number }} \\
   {\mbox{}\color{muted}{{ buyer.email }}} & {{ date }}
 \end{tabularx}}
 
 \vspace{4pt}
-{\color{brand}\rule{\linewidth}{1.2pt}}
+{\color{accent}\rule{\linewidth}{1.2pt}}
 
 \vspace{14pt}
 {\renewcommand{\arraystretch}{1.25}
@@ -47,7 +48,7 @@
 \vspace{18pt}
 % A longtable, so a long order breaks across pages with the header repeated.
 % Every column has a fixed width: one compile pass gives aligned columns.
-{\rowcolors{2}{band}{white}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}
+{\rowcolors{2}{accent!8}{white}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}
 \begin{longtable}{@{\hspace{6pt}}>{\raggedright\arraybackslash}p{24mm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-12pt-8\tabcolsep-24mm-12mm-22mm-22mm\relax} >{\raggedleft\arraybackslash}p{12mm} >{\raggedleft\arraybackslash}p{22mm} >{\raggedleft\arraybackslash}p{22mm}@{\hspace{6pt}}}
   \rowcolor{ink}\textcolor{white}{\textbf{Item no.}} & \textcolor{white}{\textbf{Description}} & \textcolor{white}{\textbf{Qty}} & \textcolor{white}{\textbf{Unit price}} & \textcolor{white}{\textbf{Amount}} \\
 \endhead
@@ -58,12 +59,12 @@
 \hfill\begin{tabular}{@{}l r@{\hspace{6pt}}}
   {\color{muted}Subtotal} & {{ subtotal | currency: currency }} \\
   {\color{muted}Tax ({{ tax_rate }}\%)} & {{ tax | currency: currency }} \\
-  \arrayrulecolor{brand}\hline
-  \textbf{Total} & \textbf{\color{brand} {{ total | currency: currency }}} \\
+  \arrayrulecolor{accent}\hline
+  \textbf{Total} & \textbf{\color{accent} {{ total | currency: currency }}} \\
 \end{tabular}
 
 \vfill
-{\color{brand}\rule{\linewidth}{1pt}}\\[4pt]
+{\color{accent}\rule{\linewidth}{1pt}}\\[4pt]
 \begin{tabularx}{\linewidth}{@{}L L@{}}
   {\small\color{muted}TERMS AND NOTES} & {\small\color{muted}AUTHORIZED BY} \\[-3pt]
   {\small {{ notes }}} & {\small {{ authorized_by }}}\par\vspace{18pt}{\color{muted}\rule{0.8\linewidth}{0.5pt}}

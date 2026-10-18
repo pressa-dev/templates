@@ -1,0 +1,40 @@
+{
+  "company": "Northwind Analytics",
+  "report_title": "Monthly Business Report",
+  "period": "August 2026",
+  "prepared_by": "Finance and Operations",
+  "summary": "August was the strongest month of the year. Revenue grew 12% on the back of the new annual plans, churn fell for the third month in a row, and support response times stayed under two hours despite a record number of tickets.",
+  "kpis": [
+    { "label": "Revenue", "value": "$142.4k", "change": "+12.1% vs July" },
+    { "label": "Active customers", "value": "1,284", "change": "+86 net new" },
+    { "label": "Churn", "value": "2.1%", "change": "-0.4 pts" },
+    { "label": "NPS", "value": "72", "change": "+5 pts" }
+  ],
+  "chart_title": "Monthly recurring revenue, thousands USD",
+  "chart": [
+    { "label": "Mar", "value": 98.2 },
+    { "label": "Apr", "value": 104.5 },
+    { "label": "May", "value": 111.0 },
+    { "label": "Jun", "value": 118.7 },
+    { "label": "Jul", "value": 127.0 },
+    { "label": "Aug", "value": 142.4 }
+  ],
+  "table_title": "Key metrics",
+  "table": [
+    { "metric": "New trials", "current": "412", "previous": "376", "change": "+9.6%" },
+    { "metric": "Trial to paid conversion", "current": "23.8%", "previous": "21.2%", "change": "+2.6 pts" },
+    { "metric": "Average revenue per customer", "current": "$110.90", "previous": "$106.10", "change": "+4.5%" },
+    { "metric": "Support tickets", "current": "1,930", "previous": "1,712", "change": "+12.7%" },
+    { "metric": "Median first response", "current": "1h 42m", "previous": "1h 55m", "change": "-11%" }
+  ],
+  "highlights": [
+    "Annual plans launched on August 4 and already make up 31% of new revenue.",
+    "Enterprise tier signed three customers, including our largest contract to date.",
+    "Churn is down to 2.1%, the lowest since we started measuring."
+  ],
+  "next_steps": [
+    "Extend annual pricing to the Starter tier in September.",
+    "Hire two support engineers ahead of the Q4 volume peak.",
+    "Ship usage-based alerts to reduce surprise overages."
+  ]
+}

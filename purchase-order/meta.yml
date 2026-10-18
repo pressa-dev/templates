@@ -1,4 +1,4 @@
-title: Purchase order
+title: Standard purchase order
 category: order
 position: 1
 summary: A purchase order with vendor and ship-to blocks, an itemised table, and totals and tax worked out for you.
@@ -17,6 +17,15 @@ pairs_with:
   - invoice
   - packing-slip
   - delivery-note
+document: purchase-order
+design: Standard
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  blue: "1D4ED8"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"
 # Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
 labels:
   buyer: "Your business"

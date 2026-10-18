@@ -1,0 +1,105 @@
+% Corporate monthly report - Pressa public template (MIT). https://pressa.dev/templates/monthly-report?design=corporate-monthly-report
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[margin=18mm,top=16mm,bottom=20mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage[hidelinks]{hyperref}
+\pgfplotsset{compat=1.18}
+
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{374151}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\titleformat{\section}{\color{accent}\bfseries\large}{}{0pt}{}[\vspace{-2pt}\textcolor{black!20}{\rule{\linewidth}{0.5pt}}]
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+% A band of the accent colour across the top of every page.
+\AddToShipoutPictureBG{\AtPageUpperLeft{\raisebox{-6mm}{\textcolor{accent}{\rule{\paperwidth}{6mm}}}}}
+\setlist[itemize]{leftmargin=1.2em, itemsep=2pt, topsep=2pt, label={\color{accent}\textbullet}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\small\color{muted} {{ company }} \quad {{ report_title }}, {{ period }}}
+\fancyfoot[R]{\small\color{muted}\thepage}
+
+\begin{document}
+\vspace*{4pt}
+\begin{tabularx}{\linewidth}{@{}m{13mm}@{\hspace{4mm}}X r@{}}
+  \tikz\node[circle, fill=accent, text=white, minimum size=12mm, font=\Large\bfseries, inner sep=0pt]{ {{- company | strip | slice: 0 | upcase -}} }; &
+  \parbox{\linewidth}{\raggedright{\small\color{muted}\MakeUppercase{ {{- company -}} }}\par\vspace{3pt}{\fontsize{20}{24}\selectfont\bfseries\mbox{}{{ report_title }}\par}} &
+  \parbox[c]{45mm}{\raggedleft\small\mbox{}{{ period }}\par\color{muted}\mbox{}{{ prepared_by }}}
+\end{tabularx}
+
+\vspace{10pt}
+{{ summary }}
+{% if kpis.size > 0 %}
+\vspace{8pt}
+{\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{9pt}
+% One column per KPI, so a fifth or a third KPI still builds.
+\noindent\arrayrulecolor{black!20}\begin{tabularx}{\linewidth}{|{% for kpi in kpis %}C{% unless forloop.last %}|{% endunless %}{% endfor %}|}
+\hline
+{% for kpi in kpis %}\vspace{5pt}{\small\color{muted} {{ kpi.label }}\par}\vspace{2pt}{\fontsize{19}{22}\selectfont\bfseries {{ kpi.value }}\par}{\small\color{accent} {{ kpi.change }}\par}\vspace{5pt}{% unless forloop.last %} & {% endunless %}{% endfor %} \\
+\hline
+\end{tabularx}}
+{% endif %}
+
+{% if chart.size > 0 %}\section{ {{- chart_title -}} }
+\begin{tikzpicture}
+\begin{axis}[
+  ybar, width=\linewidth, height=5.6cm, bar width=15pt, ymin=0,
+  axis lines*=left, axis line style={draw=muted!40}, ymajorgrids, grid style={draw=muted!15},
+  enlarge x limits=0.06, xtick=data, tick style={draw=none},
+  tick label style={font=\small, color=muted},
+  scaled y ticks=false, /pgf/number format/assume math mode=true,
+  yticklabel style={/pgf/number format/fixed},
+  nodes near coords, nodes near coords style={font=\scriptsize, color=ink},
+  symbolic x coords={ {% for point in chart %}{{ point.label }}{% unless forloop.last %},{% endunless %}{% endfor %} },
+]
+\addplot[fill=accent, draw=none] coordinates { {% for point in chart %}({{ point.label }},{{ point.value | round: 2 }}) {% endfor %} };
+\end{axis}
+\end{tikzpicture}
+{% endif %}
+
+{% if table.size > 0 %}\section{ {{- table_title -}} }
+{\renewcommand{\arraystretch}{1.45}\arrayrulecolor{black!20}
+% A longtable with fixed columns: a long table breaks across pages with its
+% header repeated, in one compile pass.
+\newlength{\metriccol}\setlength{\metriccol}{24mm}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr\linewidth-5\arrayrulewidth-8\tabcolsep-3\metriccol\relax}|>{\raggedleft\arraybackslash}p{\metriccol}|>{\raggedleft\arraybackslash}p{\metriccol}|>{\raggedleft\arraybackslash}p{\metriccol}|}
+\hline
+\rowcolor{accent}\textcolor{white}{\bfseries Metric} & \textcolor{white}{\bfseries This period} & \textcolor{white}{\bfseries Previous} & \textcolor{white}{\bfseries Change} \\
+\hline
+\endhead
+{% for row in table %}{{ row.metric }} & {{ row.current }} & {{ row.previous }} & {{ row.change }} \\
+\hline
+{% endfor %}\end{longtable}}
+{% endif %}
+
+\begin{minipage}[t]{0.48\linewidth}
+{% if highlights.size > 0 %}\section{Highlights}
+\begin{itemize}
+{% for item in highlights %}  \item {{ item }}
+{% endfor %}\end{itemize}{% endif %}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{% if next_steps.size > 0 %}\section{Next steps}
+\begin{itemize}
+{% for item in next_steps %}  \item {{ item }}
+{% endfor %}\end{itemize}{% endif %}
+\end{minipage}
+
+\end{document}

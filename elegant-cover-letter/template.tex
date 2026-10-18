@@ -1,0 +1,41 @@
+% Elegant cover letter - Pressa public template (MIT). https://pressa.dev/templates/cover-letter?design=elegant-cover-letter
+% Matches the elegant resume (elegant-resume), so the two read as one application.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[lining]{ebgaramond}
+\usepackage[left=1.1in,right=1.1in,top=0.8in,bottom=0.9in]{geometry}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{8B1E3F}
+\definecolor{ink}{HTML}{222222}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+\frenchspacing
+
+\begin{document}
+\color{ink}
+{\centering\setlength{\parskip}{0pt}
+  {\fontsize{30}{34}\selectfont\scshape\mbox{}{{ name }}}\par\vspace{6pt}
+  \textcolor{accent}{\rule{0.35\linewidth}{0.6pt}}\par\vspace{6pt}
+  {\small\mbox{}{{ location }} \quad\textperiodcentered\quad {{ email }} \quad\textperiodcentered\quad {{ phone }} \quad\textperiodcentered\quad {{ website }}}\par}
+
+\vspace{18pt}
+{\itshape\mbox{}{{ date }}}
+
+\mbox{}{{ recipient_name }}\\
+\mbox{}{{ recipient_title }}\\
+\mbox{}{{ company }}\\
+\mbox{}{{ company_address }}
+
+{{ greeting }}
+
+{% for paragraph in paragraphs %}{{ paragraph }}
+
+{% endfor %}{{ closing }}
+
+\vspace{6pt}
+{{ name }}
+
+\end{document}

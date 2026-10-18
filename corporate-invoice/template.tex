@@ -1,0 +1,83 @@
+% Corporate invoice - Pressa public template (MIT). https://pressa.dev/templates/invoice?design=corporate-invoice
+% Line totals, subtotal, tax and total are computed from the data, each rounded to the
+% currency's minor unit (cents, whole yen) as printed, so the printed numbers add up.
+% Unit prices keep up to 4 decimals for items priced below a cent.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[margin=18mm,top=24mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{374151}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcommand{\fieldname}[1]{\textcolor{muted}{\footnotesize\MakeUppercase{#1}}}
+% A band of the accent colour across the top of every page.
+\AddToShipoutPictureBG{\AtPageUpperLeft{\raisebox{-8mm}{\textcolor{accent}{\rule{\paperwidth}{8mm}}}}}
+
+\begin{document}
+\color{ink}
+{% assign d = currency | currency_decimals %}{% assign subtotal = 0 %}{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}{% assign subtotal = subtotal | plus: line %}{% endfor %}{% assign tax = subtotal | times: tax_rate | divided_by: 100.0 | round: d %}{% assign total = subtotal | plus: tax %}
+\begin{tabularx}{\linewidth}{@{}m{13mm}@{\hspace{4mm}}L r@{}}
+  \tikz\node[circle, fill=accent, text=white, minimum size=12mm, font=\Large\bfseries, inner sep=0pt]{ {{- seller.name | strip | slice: 0 | upcase -}} }; &
+  \parbox{\linewidth}{\raggedright{\large\bfseries\mbox{}{{ seller.name }}}\par{\small\mbox{}{{ seller.address }}\par\mbox{}{{ seller.email }}}} &
+  \textcolor{accent}{\fontsize{24}{26}\selectfont\bfseries INVOICE}
+\end{tabularx}
+
+\vspace{16pt}
+{\renewcommand{\arraystretch}{1.6}\arrayrulecolor{black!20}
+\begin{tabularx}{\linewidth}{|L|L|L|L|}
+  \hline
+  \fieldname{Invoice no.} & \fieldname{Issue date} & \fieldname{Due date} & \fieldname{Terms} \\
+  {\bfseries {{ invoice_number }}} & {{ issue_date }} & {{ due_date }} & {{ payment_terms }} \\
+  \hline
+\end{tabularx}}
+
+\vspace{14pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}>{\raggedleft\arraybackslash}X@{}}
+  % The accent rule runs the full height of the cell, however long the address.
+  \begin{tabular}[t]{@{}!{\color{accent}\vrule width 2pt}@{\hspace{8pt}}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-14pt\relax}@{}}
+    \fieldname{Bill to}\par\vspace{2pt}{\bfseries\mbox{}{{ client.name }}}\par{\small\mbox{}{{ client.address }}}
+  \end{tabular} &
+  \fieldname{Amount due}\par\vspace{3pt}{\fontsize{20}{24}\selectfont\bfseries\textcolor{accent}{ {{- total | currency: currency -}} }}
+\end{tabularx}
+
+\vspace{18pt}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\renewcommand{\arraystretch}{1.6}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}\arrayrulecolor{black!20}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr\linewidth-8\tabcolsep-5\arrayrulewidth-12mm-26mm-26mm\relax}|>{\raggedleft\arraybackslash}p{12mm}|>{\raggedleft\arraybackslash}p{26mm}|>{\raggedleft\arraybackslash}p{26mm}|}
+  \hline
+  \rowcolor{accent}\textcolor{white}{\bfseries Description} & \textcolor{white}{\bfseries Qty} & \textcolor{white}{\bfseries Unit price} & \textcolor{white}{\bfseries Amount} \\
+  \hline
+\endhead
+{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}  {{ item.description }} & {{ item.quantity | round: 2 }} & {{ price | currency: currency, 4 }} & {{ line | currency: currency }} \\
+  \hline
+{% endfor %}\end{longtable}}
+
+\vspace{8pt}
+\hfill{\renewcommand{\arraystretch}{1.6}\arrayrulecolor{black!20}\begin{tabular}{|l|r|}
+  \hline
+  Subtotal & {{ subtotal | currency: currency }} \\
+  \hline
+  Tax ({{ tax_rate }}\%) & {{ tax | currency: currency }} \\
+  \hline
+  \rowcolor{accent}\textcolor{white}{\bfseries Total} & \textcolor{white}{\bfseries {{ total | currency: currency }}} \\
+  \hline
+\end{tabular}}
+
+\vfill
+\begin{tabularx}{\linewidth}{@{}L@{\hspace{10mm}}L@{}}
+  \fieldname{Payment details} & \fieldname{Notes} \\[2pt]
+  {\small {{ payment_details }}} & {\small {{ notes }}}
+\end{tabularx}
+\end{document}

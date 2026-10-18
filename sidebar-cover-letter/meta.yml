@@ -1,0 +1,21 @@
+title: Sidebar cover letter
+category: cover-letter
+position: 4
+summary: A cover letter with a coloured sidebar for your contact details, matching the sidebar resume.
+description: >-
+  A two-column letter in Raleway: a full-height colour column with your contact details and the date, as on the sidebar resume, and your name, the recipient and the letter in the main column. Long letters continue on a second page.
+instructions: >-
+  Three or four short paragraphs: why this role, the two or three results that prove you can do it
+  (the same facts as the resume, not new ones), and a closing line. Address a named person when the
+  posting gives one. Never invent experience or claims about the company.
+compiler: pdflatex
+pairs_with: [sidebar-resume]
+document: cover-letter
+design: Sidebar
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

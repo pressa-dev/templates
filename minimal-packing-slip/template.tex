@@ -1,0 +1,65 @@
+% Minimal packing slip - Pressa public template (MIT). https://pressa.dev/templates/packing-slip?design=minimal-packing-slip
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[margin=22mm,top=22mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{0F766E}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcommand{\fieldname}[1]{\textcolor{muted}{\scriptsize\MakeUppercase{#1}}}
+
+\begin{document}
+\color{ink}
+{% assign total_quantity = 0 %}{% for item in items %}{% assign total_quantity = total_quantity | plus: item.quantity %}{% endfor %}
+{\fontsize{30}{32}\selectfont Packing slip}\par\vspace{8pt}\textcolor{accent}{\rule{12mm}{2pt}}
+
+\vspace{22pt}
+{\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}L L L L >{\raggedleft\arraybackslash}X@{}}
+  \fieldname{Order no.} & \fieldname{Date} & \fieldname{Shipping method} & \fieldname{Tracking} & \fieldname{Total items} \\
+  {{ order_number }} & {{ date }} & {{ shipping_method }} & {{ tracking_number }} & \textcolor{accent}{\bfseries {{ total_quantity | round: 2 }}}
+\end{tabularx}}
+
+\vspace{22pt}
+\begin{tabularx}{\linewidth}{@{}L L@{}}
+  \fieldname{From} & \fieldname{Ship to} \\[2pt]
+  {\bfseries\mbox{}{{ sender.name }}} & {\bfseries\mbox{}{{ ship_to.name }}} \\
+  {\small {{ sender.address }}\par {{ sender.email }}} & {\small {{ ship_to.address }}}
+\end{tabularx}
+
+\vspace{26pt}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\renewcommand{\arraystretch}{1.7}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}\arrayrulecolor{black!12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{30mm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-6\tabcolsep-30mm-18mm\relax} >{\raggedleft\arraybackslash}p{18mm}@{}}
+  \fieldname{Item no.} & \fieldname{Description} & \fieldname{Qty} \\
+  \hline
+\endhead
+{% for item in items %}  {{ item.sku }} & {{ item.description }} & {{ item.quantity | round: 2 }} \\
+  \hline
+{% endfor %}\end{longtable}}
+
+\vspace{10pt}
+\hfill{\renewcommand{\arraystretch}{1.5}\begin{tabular}{@{}l@{\hspace{14mm}}r@{}}
+  \textbf{Total items} & \textcolor{accent}{\large\bfseries {{ total_quantity | round: 2 }}} \\
+\end{tabular}}
+
+\vfill
+\begin{tabularx}{\linewidth}{@{}L@{}}
+  \fieldname{Notes} \\[2pt]
+  {\small {{ notes }}}
+\end{tabularx}
+\end{document}

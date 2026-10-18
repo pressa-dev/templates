@@ -1,0 +1,30 @@
+{
+  "buyer": {
+    "name": "Harbor Street Cafe",
+    "address": "77 Harbor Street, Charleston, SC 29401",
+    "email": "purchasing@harborstreet.example.com"
+  },
+  "po_number": "PO-2026-0417",
+  "date": "October 6, 2026",
+  "vendor": {
+    "name": "Fernwood Supply Co.",
+    "address": "220 Mill Road, Asheville, NC 28801"
+  },
+  "ship_to": {
+    "name": "Harbor Street Cafe, receiving",
+    "address": "Rear entrance, 77 Harbor Street, Charleston, SC 29401"
+  },
+  "delivery_date": "October 20, 2026",
+  "payment_terms": "Net 30 from delivery",
+  "currency": "USD",
+  "tax_rate": 6,
+  "items": [
+    { "sku": "MUG-12-WHT", "description": "Stoneware mug, 12 oz, white", "quantity": 24, "unit_price": 7.5 },
+    { "sku": "MUG-12-SAG", "description": "Stoneware mug, 12 oz, sage", "quantity": 24, "unit_price": 7.5 },
+    { "sku": "PLT-8-WHT", "description": "Side plate, 8 in, white", "quantity": 36, "unit_price": 5.25 },
+    { "sku": "SAU-6-WHT", "description": "Saucer, 6 in, white", "quantity": 48, "unit_price": 3.4 },
+    { "sku": "CRF-1L", "description": "Glass carafe, 1 litre", "quantity": 6, "unit_price": 18 }
+  ],
+  "notes": "Deliver between 7 and 10 am. Partial deliveries accepted. Quote the PO number on the invoice and every delivery note.",
+  "authorized_by": "Dana Brooks, Operations Manager"
+}

@@ -1,0 +1,32 @@
+title: Corporate invoice
+category: invoice
+position: 5
+summary: A structured corporate invoice with a monogram, a top band and a fully ruled grid for every detail.
+description: >-
+  A structured layout for established businesses: a colour band across the top, a monogram made
+  from your business name, the invoice details in a ruled grid, the client beside the amount due,
+  and an item table and totals with full grid lines. It takes exactly the same data as the other
+  invoice designs.
+instructions: >-
+  Send quantity, unit_price and tax_rate as numbers (tax_rate in percent, e.g. 8.5); the template
+  computes every amount, so never send totals. currency is a code such as USD, EUR or GBP. Keep each
+  description to one line where possible. Do not invent prices, bank details or payment terms; ask
+  the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - purchase-order
+  - packing-slip
+  - cash-receipt
+document: invoice
+design: Corporate
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  graphite: "374151"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+labels:
+  seller: "Your business"
+  client: "Bill to"
+  tax_rate: "Tax rate (%)"

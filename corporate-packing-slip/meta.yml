@@ -1,0 +1,30 @@
+title: Corporate packing slip
+category: order
+position: 5
+summary: A structured packing slip with a top band, a monogram and a fully ruled grid.
+description: >-
+  A packing slip with a structured layout with a colour band across the top, a monogram from your business name, the details in a ruled grid and a fully ruled table. It takes exactly the same data as the other packing slip designs.
+instructions: >-
+  Send quantity as a number; the total item count is calculated, so never send it. sku is your item
+  or SKU number and may be empty. Leave tracking_number empty if there is none yet. Do not invent
+  addresses, order numbers or tracking numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+document: packing-slip
+design: Corporate
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  graphite: "374151"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Ship to"
+  order_number: "Order number"
+  sku: "Item no."
+  tracking_number: "Tracking number"

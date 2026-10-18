@@ -1,0 +1,30 @@
+title: Minimal packing slip
+category: order
+position: 4
+summary: A quiet, airy packing slip in Helvetica with hairline rules and one accent colour.
+description: >-
+  A packing slip with a quiet Helvetica layout with generous white space, the key details in one row, hairline rules and only the total quantity in colour. It takes exactly the same data as the other packing slip designs.
+instructions: >-
+  Send quantity as a number; the total item count is calculated, so never send it. sku is your item
+  or SKU number and may be empty. Leave tracking_number empty if there is none yet. Do not invent
+  addresses, order numbers or tracking numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+document: packing-slip
+design: Minimal
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  blue: "1D4ED8"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Ship to"
+  order_number: "Order number"
+  sku: "Item no."
+  tracking_number: "Tracking number"

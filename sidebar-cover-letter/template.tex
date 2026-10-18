@@ -1,0 +1,65 @@
+% Sidebar cover letter - Pressa public template (MIT). https://pressa.dev/templates/cover-letter?design=sidebar-cover-letter
+% Matches the sidebar resume (sidebar-resume), so the two read as one application.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
+\usepackage[left=3.0in,right=0.8in,top=0.65in,bottom=0.8in]{geometry}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{0F766E}
+\definecolor{ink}{HTML}{1F2933}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+\frenchspacing
+
+% The coloured column runs down the left of every page.
+\newlength{\sidebarwidth}
+\setlength{\sidebarwidth}{2.55in}
+\AddToShipoutPictureBG{\AtPageLowerLeft{\textcolor{accent}{\rule{\sidebarwidth}{\paperheight}}}}
+\newsavebox{\sidebarbox}
+\newlength{\sidebarroom}
+\setlength{\sidebarroom}{\dimexpr\paperheight-0.62in-0.6in\relax}
+\newcommand{\sidelabel}[1]{\par\vspace{14pt}{\footnotesize\bfseries\MakeUppercase{#1}}\par\vspace{2pt}\textcolor{white}{\rule{1.6em}{0.8pt}}\par\vspace{4pt}}
+
+\begin{document}
+\color{ink}\raggedright
+% The column's text, on the first page only, scaled down to fit if it ever
+% is taller than the page.
+\sbox{\sidebarbox}{\parbox[t]{\dimexpr\sidebarwidth-0.76in\relax}{\raggedright\color{white}\small\setlength{\parskip}{0pt}
+  \sidelabel{Contact}
+  \mbox{}{{ location }}\par\smallskip
+  \mbox{}{{ email }}\par\smallskip
+  \mbox{}{{ phone }}\par\smallskip
+  \mbox{}{{ website }}\par
+  \sidelabel{Date}
+  \mbox{}{{ date }}\par
+}}
+\ifdim\dimexpr\ht\sidebarbox+\dp\sidebarbox\relax>\sidebarroom
+  \sbox{\sidebarbox}{\resizebox*{!}{\sidebarroom}{\usebox{\sidebarbox}}}
+\fi
+\AddToShipoutPictureFG*{\AtPageUpperLeft{\hspace*{0.38in}\raisebox{\dimexpr-\ht\sidebarbox-0.62in\relax}{\usebox{\sidebarbox}}}}
+
+{\setlength{\parskip}{0pt}
+{\fontsize{26}{30}\selectfont\bfseries\mbox{}{{ name }}\par}\vspace{6pt}
+{\color{accent}\rule{\linewidth}{0.6pt}}\par}
+
+\vspace{4pt}
+\mbox{}{{ recipient_name }}\\
+\mbox{}{{ recipient_title }}\\
+\mbox{}{{ company }}\\
+\mbox{}{{ company_address }}
+
+{{ greeting }}
+
+{% for paragraph in paragraphs %}{{ paragraph }}
+
+{% endfor %}{{ closing }}
+
+\vspace{6pt}
+{{ name }}
+
+\end{document}

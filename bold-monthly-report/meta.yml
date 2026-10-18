@@ -1,0 +1,22 @@
+title: Bold monthly report
+category: report
+position: 2
+summary: A business report with the title in a colour band and KPI cards in solid colour.
+description: >-
+  A confident report in Source Sans: the company, title and period in white on a colour band, a summary, KPI cards in solid colour, a bar chart from your numbers, a metrics table, and highlights and next steps side by side. It takes exactly the same data as the other report designs.
+instructions: >-
+  Send exactly four kpis, each with a label, a formatted value (e.g. "$142.4k") and a change line.
+  chart is a list of label and numeric value pairs, oldest first, six to twelve points; say the unit
+  in chart_title. Table values are strings, already formatted. Keep the summary to two or three
+  sentences. Use only numbers the user provided; never estimate or round them into new claims.
+compiler: pdflatex
+pairs_with: []
+document: monthly-report
+design: Bold
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  blue: "1D4ED8"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"

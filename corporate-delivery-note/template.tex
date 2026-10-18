@@ -1,0 +1,82 @@
+% Corporate delivery note - Pressa public template (MIT). https://pressa.dev/templates/delivery-note?design=corporate-delivery-note
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[margin=18mm,top=24mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{374151}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcommand{\fieldname}[1]{\textcolor{muted}{\footnotesize\MakeUppercase{#1}}}
+% A band of the accent colour across the top of every page.
+\AddToShipoutPictureBG{\AtPageUpperLeft{\raisebox{-8mm}{\textcolor{accent}{\rule{\paperwidth}{8mm}}}}}
+
+\begin{document}
+\color{ink}
+{% assign total_quantity = 0 %}{% for item in items %}{% assign total_quantity = total_quantity | plus: item.quantity %}{% endfor %}
+\begin{tabularx}{\linewidth}{@{}m{13mm}@{\hspace{4mm}}L r@{}}
+  \tikz\node[circle, fill=accent, text=white, minimum size=12mm, font=\Large\bfseries, inner sep=0pt]{ {{- sender.name | strip | slice: 0 | upcase -}} }; &
+  \parbox{\linewidth}{\raggedright{\large\bfseries\mbox{}{{ sender.name }}}\par{\small\mbox{}{{ sender.address }}\par\mbox{}{{ sender.email }}}} &
+  \textcolor{accent}{\fontsize{22}{24}\selectfont\bfseries DELIVERY NOTE}
+\end{tabularx}
+
+\vspace{16pt}
+{\renewcommand{\arraystretch}{1.6}\arrayrulecolor{black!20}
+\begin{tabularx}{\linewidth}{|L|L|L|L|}
+  \hline
+  \fieldname{Order no.} & \fieldname{Date} & \fieldname{Delivery} & \fieldname{Reference} \\
+  {\bfseries {{ order_number }}} & {{ date }} & {{ shipping_method }} & {{ tracking_number }} \\
+  \hline
+\end{tabularx}}
+
+\vspace{14pt}
+% Each block has an accent rule the full height of its text.
+\begin{tabularx}{\linewidth}{@{}!{\color{accent}\vrule width 2pt}@{\hspace{8pt}}L@{}}
+  \fieldname{Deliver to}\par\vspace{2pt}{\bfseries\mbox{}{{ ship_to.name }}}\par{\small\mbox{}{{ ship_to.address }}}
+\end{tabularx}
+
+\vspace{18pt}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\renewcommand{\arraystretch}{1.6}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}\arrayrulecolor{black!20}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{30mm}|>{\raggedright\arraybackslash}p{\dimexpr\linewidth-4\arrayrulewidth-6\tabcolsep-30mm-18mm\relax}|>{\raggedleft\arraybackslash}p{18mm}|}
+  \hline
+  \rowcolor{accent}\textcolor{white}{\bfseries Item no.} & \textcolor{white}{\bfseries Description} & \textcolor{white}{\bfseries Quantity} \\
+  \hline
+\endhead
+{% for item in items %}  {{ item.sku }} & {{ item.description }} & {{ item.quantity | round: 2 }} \\
+  \hline
+{% endfor %}\end{longtable}}
+
+\vspace{8pt}
+\hfill{\renewcommand{\arraystretch}{1.6}\arrayrulecolor{black!20}\begin{tabular}{|l|r|}
+  \hline
+  \rowcolor{accent}\textcolor{white}{\bfseries Total quantity} & \textcolor{white}{\bfseries {{ total_quantity | round: 2 }}} \\
+  \hline
+\end{tabular}}
+
+\vfill
+\begin{tabularx}{\linewidth}{@{}L@{}}
+  \fieldname{Notes} \\[2pt]
+  {\small {{ notes }}}
+\end{tabularx}
+\vspace{14pt}
+{\small Received the goods listed above in good condition.}\\[22pt]
+{\renewcommand{\arraystretch}{1}\begin{tabularx}{\linewidth}{@{}X@{\hspace{14pt}}X@{\hspace{14pt}}X@{}}
+  \textcolor{accent}{\rule{\linewidth}{0.5pt}} & \textcolor{accent}{\rule{\linewidth}{0.5pt}} & \textcolor{accent}{\rule{\linewidth}{0.5pt}} \\[2pt]
+  {\small\textcolor{muted}{Name}} & {\small\textcolor{muted}{Signature}} & {\small\textcolor{muted}{Date}}
+\end{tabularx}}
+\end{document}

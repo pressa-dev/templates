@@ -1,0 +1,33 @@
+{
+  "name": "Elena Varga",
+  "position": "Assistant Professor of Economics",
+  "department": "Department of Economics",
+  "institution": "Lakeshore University",
+  "email": "elena.varga@example.edu",
+  "website": "elenavarga.example.com",
+  "research_interests": "Labor economics, household finance, and the effects of minimum wage policy on small firms. Methods: panel data, natural experiments, and administrative records.",
+  "appointments": [
+    { "position": "Assistant Professor of Economics", "institution": "Lakeshore University", "dates": "2022 - present" },
+    { "position": "Postdoctoral Fellow", "institution": "Center for Labor Studies, Northfield University", "dates": "2020 - 2022" }
+  ],
+  "education": [
+    { "degree": "Ph.D. in Economics", "school": "Northfield University", "year": "2020" },
+    { "degree": "M.A. in Economics", "school": "Northfield University", "year": "2016" },
+    { "degree": "B.A. in Economics and Mathematics", "school": "Riverside College", "year": "2014" }
+  ],
+  "publications": [
+    { "authors": "Varga, E.", "year": "2025", "title": "Minimum wages and the survival of small firms: evidence from county borders", "venue": "Journal of Labor Research" },
+    { "authors": "Varga, E. and Okafor, D.", "year": "2024", "title": "Paycheck timing and household borrowing", "venue": "Review of Household Finance" },
+    { "authors": "Okafor, D., Varga, E. and Lin, S.", "year": "2023", "title": "Who pays for scheduling rules? Hours, wages and turnover in retail", "venue": "Industrial Relations Quarterly" },
+    { "authors": "Varga, E.", "year": "2021", "title": "Local labor markets after plant closures", "venue": "Regional Economics Letters" }
+  ],
+  "awards": [
+    { "name": "Early Career Research Grant, Foundation for Labor Research ($120,000)", "year": "2024" },
+    { "name": "Outstanding Teaching Award, Lakeshore University", "year": "2023" },
+    { "name": "Dissertation Fellowship, Northfield University", "year": "2019" }
+  ],
+  "teaching": [
+    { "course": "Labor Economics (undergraduate)", "institution": "Lakeshore University", "terms": "Fall 2022 - present" },
+    { "course": "Applied Econometrics (graduate)", "institution": "Lakeshore University", "terms": "Spring 2023 - present" }
+  ]
+}

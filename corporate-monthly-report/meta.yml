@@ -1,0 +1,22 @@
+title: Corporate monthly report
+category: report
+position: 5
+summary: A structured report with a top band, a monogram and KPIs and metrics in ruled grids.
+description: >-
+  A structured report: a colour band across the top, a monogram from the company name, the KPIs in a ruled grid, a bar chart, a fully ruled metrics table with a colour header, and highlights and next steps. It takes exactly the same data as the other report designs.
+instructions: >-
+  Send exactly four kpis, each with a label, a formatted value (e.g. "$142.4k") and a change line.
+  chart is a list of label and numeric value pairs, oldest first, six to twelve points; say the unit
+  in chart_title. Table values are strings, already formatted. Keep the summary to two or three
+  sentences. Use only numbers the user provided; never estimate or round them into new claims.
+compiler: pdflatex
+pairs_with: []
+document: monthly-report
+design: Corporate
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  graphite: "374151"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"

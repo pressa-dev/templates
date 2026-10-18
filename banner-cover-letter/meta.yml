@@ -1,0 +1,21 @@
+title: Banner cover letter
+category: cover-letter
+position: 3
+summary: A cover letter with your name in a bold colour band, matching the banner resume.
+description: >-
+  A confident letter in Source Sans: your name and contact details in white on a full-width colour band, as on the banner resume, then the date in the accent colour, the recipient and your letter.
+instructions: >-
+  Three or four short paragraphs: why this role, the two or three results that prove you can do it
+  (the same facts as the resume, not new ones), and a closing line. Address a named person when the
+  posting gives one. Never invent experience or claims about the company.
+compiler: pdflatex
+pairs_with: [banner-resume]
+document: cover-letter
+design: Banner
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

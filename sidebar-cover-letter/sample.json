@@ -1,0 +1,19 @@
+{
+  "name": "Alex Rivera",
+  "location": "Chicago, IL",
+  "email": "alex.rivera@example.com",
+  "phone": "(312) 555-0142",
+  "website": "alexrivera.example.com",
+  "date": "September 25, 2026",
+  "recipient_name": "Jordan Lee",
+  "recipient_title": "Engineering Manager, Platform",
+  "company": "Pinewood Payments",
+  "company_address": "200 West Madison Street, Chicago, IL 60606",
+  "greeting": "Dear Jordan,",
+  "paragraphs": [
+    "I am applying for the Staff Platform Engineer role. For the last eight years I have built the kind of systems your posting describes: payment APIs that must never charge twice, and event pipelines that stay fast at tens of millions of messages a day.",
+    "At Harbor Payments I built the card payment and refund APIs behind $2 billion in annual volume, and added the idempotency keys and retry-safe webhooks that ended duplicate charges during partner outages. At Lumen Logistics I replaced nightly batch jobs with a Kafka pipeline and rebuilt our tracking service in Go, cutting p95 latency from 900 ms to 180 ms.",
+    "What draws me to Pinewood is the move to real-time settlement. It is a hard reliability problem, and it is the work I most enjoy. I would welcome the chance to talk about how I could help your platform team get there."
+  ],
+  "closing": "Sincerely,"
+}

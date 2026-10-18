@@ -1,4 +1,4 @@
-title: Cover letter
+title: Classic cover letter
 category: cover-letter
 position: 1
 summary: A one-page cover letter that matches the classic resume, so both read as one application.
@@ -13,3 +13,12 @@ instructions: >-
   posting gives one. Never invent experience or claims about the company.
 compiler: pdflatex
 pairs_with: [classic-resume]
+document: cover-letter
+design: Classic
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

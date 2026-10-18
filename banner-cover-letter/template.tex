@@ -1,0 +1,48 @@
+% Banner cover letter - Pressa public template (MIT). https://pressa.dev/templates/cover-letter?design=banner-cover-letter
+% Matches the banner resume (banner-resume), so the two read as one application.
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[left=0.9in,right=0.9in,top=0.6in,bottom=0.8in]{geometry}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{ink}{HTML}{1F2933}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+\frenchspacing
+
+\begin{document}
+\color{ink}
+% The band runs edge to edge and grows with its text: page margins are
+% undone on the left and at the top.
+\vspace*{-\dimexpr0.6in+\topskip\relax}
+\noindent\hspace*{-0.9in}{\setlength{\fboxsep}{0pt}\colorbox{accent}{\parbox{\paperwidth}{\relax
+  \vspace*{0.42in}%
+  \hspace*{0.9in}\parbox{\dimexpr\paperwidth-1.8in\relax}{\raggedright\color{white}
+    {\fontsize{28}{32}\selectfont\bfseries\mbox{}{{ name }}}\\[9pt]
+    {\small\mbox{}{{ location }} \quad\textbar\quad {{ email }} \quad\textbar\quad {{ phone }} \quad\textbar\quad {{ website }}}%
+  }%
+  \vspace*{0.34in}%
+}}}
+
+\vspace{14pt}
+\textcolor{accent}{\bfseries\mbox{}{{ date }}}
+
+\mbox{}{{ recipient_name }}\\
+\mbox{}{{ recipient_title }}\\
+\mbox{}{{ company }}\\
+\mbox{}{{ company_address }}
+
+{{ greeting }}
+
+{% for paragraph in paragraphs %}{{ paragraph }}
+
+{% endfor %}{{ closing }}
+
+\vspace{6pt}
+{{ name }}
+
+\end{document}

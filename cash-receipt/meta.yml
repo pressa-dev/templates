@@ -1,4 +1,4 @@
-title: Cash receipt
+title: Framed cash receipt
 category: receipt
 position: 1
 summary: A cash receipt sized for the top half of the page, with who paid, what for, the amount and a line for your signature.
@@ -15,6 +15,15 @@ instructions: >-
 compiler: pdflatex
 pairs_with:
   - invoice
+document: cash-receipt
+design: Framed
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  green: "047857"
+  teal: "0F766E"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  graphite: "374151"
 # Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
 labels:
   business: "Your business"

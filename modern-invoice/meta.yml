@@ -1,0 +1,32 @@
+title: Modern invoice
+category: invoice
+position: 4
+summary: A modern invoice in Lato with a colour stripe down the edge, a tinted summary card and a highlighted total.
+description: >-
+  A contemporary layout: a colour stripe down the left edge, a large "Invoice" title with the
+  number in the accent colour, a tinted card with the client, the dates and the amount due, an
+  item table with a tinted header and the total on a solid colour bar. It takes exactly the same
+  data as the other invoice designs.
+instructions: >-
+  Send quantity, unit_price and tax_rate as numbers (tax_rate in percent, e.g. 8.5); the template
+  computes every amount, so never send totals. currency is a code such as USD, EUR or GBP. Keep each
+  description to one line where possible. Do not invent prices, bank details or payment terms; ask
+  the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - purchase-order
+  - packing-slip
+  - cash-receipt
+document: invoice
+design: Modern
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  indigo: "4338CA"
+  teal: "0F766E"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+labels:
+  seller: "Your business"
+  client: "Bill to"
+  tax_rate: "Tax rate (%)"

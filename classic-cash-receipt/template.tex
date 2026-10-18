@@ -1,0 +1,59 @@
+% Classic cash receipt - Pressa public template (MIT). https://pressa.dev/templates/cash-receipt?design=classic-cash-receipt
+% One receipt in the top half of an A4 page, so it can be printed and cut.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[margin=18mm,top=16mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcommand{\fieldname}[1]{\textcolor{muted}{\footnotesize\scshape\MakeLowercase{#1}}}
+
+\begin{document}
+\color{ink}
+% A double rule frames the receipt, like a printed receipt book.
+\setlength{\fboxsep}{2pt}\setlength{\fboxrule}{0.4pt}
+\noindent{\color{accent}\fbox{\setlength{\fboxsep}{14pt}\fbox{\parbox{\dimexpr\linewidth-4\fboxrule-4pt-28pt\relax}{\color{ink}
+  \begin{tabularx}{\linewidth}{@{}L r@{}}
+    {\Large\bfseries\mbox{}{{ business.name }}} & \textcolor{accent}{\fontsize{20}{22}\selectfont\scshape cash receipt} \\[4pt]
+    {\small\mbox{}{{ business.address }}} & {\small\textcolor{muted}{No.}\ {{ receipt_number }}} \\
+    {\small\mbox{}{{ business.phone }}} & {\small {{ date }}}
+  \end{tabularx}
+
+  \vspace{6pt}
+  \textcolor{accent}{\rule{\linewidth}{0.6pt}}
+
+  \vspace{6pt}
+  {\renewcommand{\arraystretch}{1.6}
+  \begin{tabularx}{\linewidth}{@{}l X@{}}
+    \fieldname{Received from} & {\bfseries\mbox{}{{ received_from }}} \\
+    \fieldname{The sum of} & {\large\bfseries\textcolor{accent}{ {{- amount | currency: currency -}} }} \\
+    \fieldname{For} & {{ description }} \\
+    \fieldname{Paid by} & {{ payment_method }} \\
+  \end{tabularx}}
+
+  \vspace{6pt}
+  {\small\itshape\raggedright\mbox{}{{ notes }}\par}
+
+  \vspace{22pt}
+  \begin{tabularx}{\linewidth}{@{}X@{\hspace{24pt}}X@{}}
+    \mbox{}{{ received_by }} & \\[2pt]
+    \textcolor{muted}{\rule{\linewidth}{0.5pt}} & \textcolor{muted}{\rule{\linewidth}{0.5pt}} \\[0pt]
+    {\small\textcolor{muted}{Received by}} & {\small\textcolor{muted}{Signature}}
+  \end{tabularx}
+}}}}
+
+\vspace{24pt}
+\textcolor{muted}{\scriptsize\dotfill\ cut here\ \dotfill}
+\end{document}

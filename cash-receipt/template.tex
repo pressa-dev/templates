@@ -1,4 +1,4 @@
-% Cash receipt - Pressa public template (MIT). https://pressa.dev/templates/cash-receipt
+% Framed cash receipt - Pressa public template (MIT). https://pressa.dev/templates/cash-receipt
 % One receipt in the top half of an A4 page, so it can be printed and cut.
 \documentclass[10pt,a4paper]{article}
 \usepackage[T1]{fontenc}
@@ -9,10 +9,11 @@
 \usepackage{array}
 \usepackage[hidelinks]{hyperref}
 
-\definecolor{brand}{HTML}{047857}
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{047857}
 \definecolor{ink}{HTML}{1F2937}
 \definecolor{muted}{HTML}{6B7280}
-\definecolor{band}{HTML}{ECFDF5}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
@@ -23,17 +24,17 @@
 
 \setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.8pt}
 % No line-end comment right after an opening brace here: Liquid reads it as a tag.
-\noindent\fcolorbox{brand}{white}{\parbox{\dimexpr\linewidth-2\fboxrule}{\setlength{\fboxsep}{3pt}\vspace{12pt}
+\noindent\fcolorbox{accent}{white}{\parbox{\dimexpr\linewidth-2\fboxrule}{\setlength{\fboxsep}{3pt}\vspace{12pt}
   \hspace*{14pt}\begin{minipage}{\dimexpr\linewidth-28pt}
     \renewcommand{\arraystretch}{1.1}
     \begin{tabularx}{\linewidth}{@{}L R@{}}
-      {\Large\bfseries\mbox{}{{ business.name }}} & {\fontsize{20}{22}\selectfont\bfseries\textcolor{brand}{CASH RECEIPT}} \\
+      {\Large\bfseries\mbox{}{{ business.name }}} & {\fontsize{20}{22}\selectfont\bfseries\textcolor{accent}{CASH RECEIPT}} \\
       {\small\mbox{}\color{muted}{{ business.address }}} & No. {{ receipt_number }} \\
       {\small\mbox{}\color{muted}{{ business.phone }}} & {{ date }}
     \end{tabularx}
 
     \vspace{8pt}
-    {\color{brand}\rule{\linewidth}{1pt}}
+    {\color{accent}\rule{\linewidth}{1pt}}
 
     \vspace{10pt}
     \renewcommand{\arraystretch}{1.7}
@@ -44,8 +45,8 @@
     \end{tabularx}
 
     \vspace{8pt}
-    \colorbox{band}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{6pt}%
-      \hspace*{8pt}{\color{muted}Amount received}\hfill{\fontsize{22}{24}\selectfont\bfseries\color{brand} {{ amount | currency: currency }}}\hspace*{8pt}%
+    \colorbox{accent!8}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{6pt}%
+      \hspace*{8pt}{\color{muted}Amount received}\hfill{\fontsize{22}{24}\selectfont\bfseries\color{accent} {{ amount | currency: currency }}}\hspace*{8pt}%
       \vspace{6pt}}}
 
     \vspace{12pt}

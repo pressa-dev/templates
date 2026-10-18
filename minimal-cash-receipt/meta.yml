@@ -1,0 +1,29 @@
+title: Minimal cash receipt
+category: receipt
+position: 4
+summary: A quiet, airy cash receipt in Helvetica with the amount as the one accent.
+description: >-
+  A minimal receipt with generous white space: a large "Receipt" title with the number and date, your business, the payer and the amount received in one row, what the payment was for between hairline rules, and lines for the name and signature. It fits the top half of an A4 page.
+instructions: >-
+  Send amount as a number and currency as a code such as USD, EUR or GBP. payment_method is usually
+  Cash but can be cheque, card or transfer. Only fill in a receipt for a payment the user actually
+  received; never invent a payer, an amount or a business, and never imitate another company's
+  receipt.
+compiler: pdflatex
+pairs_with:
+  - invoice
+document: cash-receipt
+design: Minimal
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  green: "047857"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  business: "Your business"
+  received_from: "Received from"
+  description: "For"
+  amount: "Amount received"

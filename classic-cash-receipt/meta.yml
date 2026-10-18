@@ -1,0 +1,29 @@
+title: Classic cash receipt
+category: receipt
+position: 3
+summary: A traditional serif cash receipt in a double-ruled frame, like a page from a receipt book.
+description: >-
+  A traditional receipt in Charter inside a double-ruled frame: your business details, "Received from", "The sum of", "For" and "Paid by" in small capitals, an optional note in italics, and lines for the name and signature of whoever took the payment. It fits the top half of an A4 page.
+instructions: >-
+  Send amount as a number and currency as a code such as USD, EUR or GBP. payment_method is usually
+  Cash but can be cheque, card or transfer. Only fill in a receipt for a payment the user actually
+  received; never invent a payer, an amount or a business, and never imitate another company's
+  receipt.
+compiler: pdflatex
+pairs_with:
+  - invoice
+document: cash-receipt
+design: Classic
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  teal: "0F766E"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  business: "Your business"
+  received_from: "Received from"
+  description: "For"
+  amount: "Amount received"

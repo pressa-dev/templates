@@ -11,3 +11,93 @@ resume:
     until one feels right: the classic serif layout recruiters and applicant tracking systems read
     without trouble, a clean modern sans-serif, a bold coloured header, a two-column layout with a
     sidebar, and an elegant layout with the headings in the margin. Each comes in five colours.
+invoice:
+  title: Invoice
+  summary: >-
+    Invoices in five designs, from bold and modern to classic and minimal, each in five colours,
+    with line amounts, tax and totals calculated for you.
+  description: >-
+    Every design takes exactly the same details, so you can type once and switch until one fits
+    your business: a bold header band, a classic serif layout with ruled lines, a minimal layout
+    with hairline rules, a modern layout with a colour stripe and a tinted summary card, and a
+    structured corporate layout with a monogram and a full grid. Amounts, subtotal, tax and total
+    are calculated from quantity, unit price and tax rate, so the numbers always add up.
+cover-letter:
+  title: Cover letter
+  summary: >-
+    Cover letters in five designs, each matching one of the resume designs, in five colours, so
+    the letter and the resume read as one application.
+  description: >-
+    Every design takes exactly the same details and matches a resume design of the same name:
+    classic serif, clean modern sans-serif, a bold colour band, a colour sidebar with your contact
+    details, and an elegant serif with your name in small capitals. Pick the one that matches your
+    resume, type your letter once and switch freely.
+purchase-order:
+  title: Purchase order
+  summary: >-
+    Purchase orders in five designs, each in five colours, with line amounts, tax and the total
+    calculated for you, in the same styles as the invoices.
+  description: >-
+    Every design takes exactly the same details: a clean standard layout, a bold colour band, a
+    classic serif layout, a minimal layout and a structured corporate grid with a monogram. They
+    match the invoice, packing slip and delivery note designs of the same name, so your documents
+    look like one set. Amounts, tax and the total are calculated from quantity, unit price and tax
+    rate.
+packing-slip:
+  title: Packing slip
+  summary: >-
+    Packing slips in five designs, each in five colours, with the total quantity counted for you.
+  description: >-
+    Every design takes exactly the same details as the others and as the delivery note: a clean
+    standard layout, a bold colour band, a classic serif layout, a minimal layout and a structured
+    corporate grid with a monogram, matching the invoice and purchase order designs of the same
+    name.
+delivery-note:
+  title: Delivery note
+  summary: >-
+    Delivery notes in five designs, each in five colours, with lines for the receiver's name and
+    signature.
+  description: >-
+    Every design takes exactly the same details as the others and as the packing slip, and closes
+    with a "received in good condition" line and spaces for the receiver's name, signature and date:
+    a bold colour band, a clean standard layout, a classic serif layout, a minimal layout and a
+    structured corporate grid with a monogram.
+cash-receipt:
+  title: Cash receipt
+  summary: >-
+    Cash receipts in five designs, each in five colours, sized for the top half of the page so you
+    can print and cut them.
+  description: >-
+    Every design takes exactly the same details: a green-framed card, a bold colour band, a classic
+    serif receipt in a double-ruled frame like a receipt book, a minimal layout and a structured
+    corporate grid with a monogram. Each fits the top half of an A4 page, with lines for the name
+    and signature of whoever took the payment.
+monthly-report:
+  title: Monthly report
+  summary: >-
+    Monthly business reports in five designs, each in five colours, with KPI cards, a bar chart
+    from your numbers and a metrics table.
+  description: >-
+    Every design takes exactly the same details: a clean standard report, a bold colour band, a
+    serif executive report for the board, a minimal layout and a structured corporate grid with a
+    monogram. Each has a summary, KPIs, a bar chart drawn from your numbers, a metrics table, and
+    highlights and next steps.
+certificate:
+  title: Certificate
+  summary: >-
+    Landscape certificates in five designs, each in five colours, with the recipient's name set
+    large and lines for up to three signatures.
+  description: >-
+    Every design takes exactly the same details: a classic certificate with a gold frame, a modern
+    layout with a colour panel, a minimal layout with a fine frame, a bold colour band, and an
+    elegant serif with a double frame and a seal. Each fits one landscape A4 page.
+academic-cv:
+  title: Academic CV
+  summary: >-
+    Multi-page academic CVs in five designs, each in five colours, with numbered publications,
+    appointments, grants and teaching.
+  description: >-
+    Every design takes exactly the same details: a traditional Latin Modern CV, a classic serif
+    with coloured rules, a clean modern sans-serif, an elegant layout with the headings in the
+    margin, and a timeline with the dates in a column of their own. Each runs to as many pages as
+    your record needs, with your name and the page number in the footer.

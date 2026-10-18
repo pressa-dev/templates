@@ -1,0 +1,21 @@
+title: Elegant certificate
+category: certificate
+position: 5
+summary: A formal landscape certificate in EB Garamond with a double frame and a seal.
+description: >-
+  A formal certificate set in EB Garamond: a double frame, the organization in small capitals, the title in italics, the recipient's name in large small capitals, the achievement, signature lines and a seal with the organization's initial. It takes exactly the same data as the other certificate designs.
+instructions: >-
+  Keep the title short (four words or fewer) and the achievement to one or two sentences. Use one to
+  three signatures. When producing a batch, keep every field the same except recipient and
+  certificate_id. Never add a signatory the user did not name.
+compiler: pdflatex
+pairs_with: []
+document: certificate
+design: Elegant
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  burgundy: "8B1E3F"
+  navy: "1F4E79"
+  forest: "2D6A4F"
+  teal: "0F766E"
+  black: "111827"

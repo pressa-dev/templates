@@ -1,0 +1,22 @@
+title: Elegant academic CV
+category: resume
+position: 13
+summary: A refined academic CV in EB Garamond with small-caps headings in the margin.
+description: >-
+  An editorial academic CV set in EB Garamond: your name in large small capitals across the page, section headings in small capitals in the left margin, and the content in a calm column beside them, over as many pages as it needs. It takes exactly the same data as the other academic CV designs.
+instructions: >-
+  List publications newest first, with authors exactly as published and the venue as it appears in
+  the journal. Appointments and education go newest first. Keep grants and awards to one line each,
+  with the amount in the name when it is public. Never add a publication, grant or degree the person
+  did not provide.
+compiler: pdflatex
+pairs_with: []
+document: academic-cv
+design: Elegant
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  burgundy: "8B1E3F"
+  navy: "1F4E79"
+  forest: "2D6A4F"
+  teal: "0F766E"
+  graphite: "374151"

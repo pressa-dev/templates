@@ -1,0 +1,21 @@
+title: Modern certificate
+category: certificate
+position: 2
+summary: A modern landscape certificate with a colour panel down the side and a large sans-serif name.
+description: >-
+  A contemporary certificate in Lato: a colour panel down the left with the organization, date and certificate number, and the title, recipient, achievement and signature lines set large beside it. It takes exactly the same data as the other certificate designs.
+instructions: >-
+  Keep the title short (four words or fewer) and the achievement to one or two sentences. Use one to
+  three signatures. When producing a batch, keep every field the same except recipient and
+  certificate_id. Never add a signatory the user did not name.
+compiler: pdflatex
+pairs_with: []
+document: certificate
+design: Modern
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

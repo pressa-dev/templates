@@ -1,0 +1,16 @@
+{
+  "business": {
+    "name": "Greenline Lawn Care",
+    "address": "14 Orchard Lane, Dayton, OH 45402",
+    "phone": "(937) 555-0148"
+  },
+  "receipt_number": "R-0219",
+  "date": "October 12, 2026",
+  "received_from": "Martha Lindqvist",
+  "description": "Autumn lawn aeration and overseeding, 1,200 sq ft, 32 Elm Court",
+  "payment_method": "Cash",
+  "amount": 285,
+  "currency": "USD",
+  "notes": "Paid in full. Thank you for your business.",
+  "received_by": "Luis Ortega"
+}

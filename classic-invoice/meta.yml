@@ -1,0 +1,32 @@
+title: Classic invoice
+category: invoice
+position: 2
+summary: A traditional serif invoice with ruled lines and small-caps labels. Calm and formal.
+description: >-
+  A traditional layout set in Charter: your business name with "Invoice" in small capitals across
+  from it, the invoice number, dates and terms in a neat column, a fine accent rule, then a ruled
+  item table and the totals, all calculated from quantity, unit price and tax rate. Payment details
+  and notes close the page. It takes exactly the same data as the other invoice designs.
+instructions: >-
+  Send quantity, unit_price and tax_rate as numbers (tax_rate in percent, e.g. 8.5); the template
+  computes every amount, so never send totals. currency is a code such as USD, EUR or GBP. Keep each
+  description to one line where possible. Do not invent prices, bank details or payment terms; ask
+  the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - purchase-order
+  - packing-slip
+  - cash-receipt
+document: invoice
+design: Classic
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  teal: "0F766E"
+  graphite: "374151"
+labels:
+  seller: "Your business"
+  client: "Bill to"
+  tax_rate: "Tax rate (%)"

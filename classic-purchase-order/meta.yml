@@ -1,0 +1,34 @@
+title: Classic purchase order
+category: order
+position: 3
+summary: A traditional serif purchase order with small-caps labels and ruled lines.
+description: >-
+  A purchase order with a traditional serif layout in Charter with small-caps labels, the details in a neat column, a fine accent rule and a ruled table. It takes exactly the same data as the other purchase order designs.
+instructions: >-
+  Send quantity, unit_price and tax_rate as numbers (tax_rate in percent, e.g. 6); the template
+  computes every amount, so never send totals. currency is a code such as USD, EUR or GBP. sku may be
+  empty. Do not invent prices, vendors, addresses or who authorized the order; ask the user.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - packing-slip
+  - delivery-note
+document: purchase-order
+design: Classic
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  teal: "0F766E"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  buyer: "Your business"
+  po_number: "PO number"
+  vendor: "Vendor"
+  ship_to: "Ship to"
+  delivery_date: "Deliver by"
+  sku: "Item no."
+  tax_rate: "Tax rate (%)"
+  authorized_by: "Authorized by"

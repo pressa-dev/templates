@@ -1,4 +1,4 @@
-title: Invoice
+title: Bold invoice
 category: invoice
 position: 1
 summary: A branded invoice with a colour header, itemised table and automatic totals and tax.
@@ -17,6 +17,15 @@ pairs_with:
   - purchase-order
   - packing-slip
   - cash-receipt
+document: invoice
+design: Bold
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  indigo: "4338CA"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"
 # Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
 labels:
   seller: "Your business"

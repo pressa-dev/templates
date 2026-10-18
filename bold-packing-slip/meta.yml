@@ -1,0 +1,30 @@
+title: Bold packing slip
+category: order
+position: 2
+summary: A packing slip with your business name in a bold colour band and a colour header row.
+description: >-
+  A packing slip with a full-width colour band with your business name, a table with a colour header row and shaded rows, and the total quantity on a solid colour bar. It takes exactly the same data as the other packing slip designs.
+instructions: >-
+  Send quantity as a number; the total item count is calculated, so never send it. sku is your item
+  or SKU number and may be empty. Leave tracking_number empty if there is none yet. Do not invent
+  addresses, order numbers or tracking numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+document: packing-slip
+design: Bold
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  blue: "1D4ED8"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Ship to"
+  order_number: "Order number"
+  sku: "Item no."
+  tracking_number: "Tracking number"

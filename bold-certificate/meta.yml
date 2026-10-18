@@ -1,0 +1,21 @@
+title: Bold certificate
+category: certificate
+position: 4
+summary: A landscape certificate with the title in a bold colour band and the name in the accent colour.
+description: >-
+  A confident certificate in Source Sans: the organization and title in white on a colour band across the top, the recipient's name large in the accent colour, the achievement, signature lines and a colour strip at the foot. It takes exactly the same data as the other certificate designs.
+instructions: >-
+  Keep the title short (four words or fewer) and the achievement to one or two sentences. Use one to
+  three signatures. When producing a batch, keep every field the same except recipient and
+  certificate_id. Never add a signatory the user did not name.
+compiler: pdflatex
+pairs_with: []
+document: certificate
+design: Bold
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  blue: "1D4ED8"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"

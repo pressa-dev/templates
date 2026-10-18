@@ -1,0 +1,21 @@
+title: Modern cover letter
+category: cover-letter
+position: 2
+summary: A clean sans-serif cover letter with a teal accent rule that matches the modern resume.
+description: >-
+  A contemporary letter in Lato with the same header as the modern resume: your name large, a single contact line and an accent rule, then the date, the recipient and your letter. Send it with the modern resume and the application reads as one set.
+instructions: >-
+  Three or four short paragraphs: why this role, the two or three results that prove you can do it
+  (the same facts as the resume, not new ones), and a closing line. Address a named person when the
+  posting gives one. Never invent experience or claims about the company.
+compiler: pdflatex
+pairs_with: [modern-resume]
+document: cover-letter
+design: Modern
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  navy: "1F4E79"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

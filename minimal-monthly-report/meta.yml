@@ -1,0 +1,22 @@
+title: Minimal monthly report
+category: report
+position: 4
+summary: A quiet Helvetica report with hairline rules and colour only where it carries meaning.
+description: >-
+  A minimal report with generous white space: a large title, KPIs separated by hairlines with the changes in the accent colour, a bar chart, a hairline metrics table, and highlights and next steps. It takes exactly the same data as the other report designs.
+instructions: >-
+  Send exactly four kpis, each with a label, a formatted value (e.g. "$142.4k") and a change line.
+  chart is a list of label and numeric value pairs, oldest first, six to twelve points; say the unit
+  in chart_title. Table values are strings, already formatted. Keep the summary to two or three
+  sentences. Use only numbers the user provided; never estimate or round them into new claims.
+compiler: pdflatex
+pairs_with: []
+document: monthly-report
+design: Minimal
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  teal: "0F766E"
+  blue: "1D4ED8"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  graphite: "374151"

@@ -1,6 +1,6 @@
-title: Delivery note
+title: Bold delivery note
 category: order
-position: 3
+position: 1
 summary: A delivery note with a navy header, the delivery address, an item and quantity table, and lines for the receiver's name and signature.
 description: >-
   The document that travels with the goods and comes back signed: a navy header band with your
@@ -16,6 +16,15 @@ compiler: pdflatex
 pairs_with:
   - invoice
   - purchase-order
+document: delivery-note
+design: Bold
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  midnight: "1E3A5F"
+  blue: "1D4ED8"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"
 # Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
 labels:
   sender: "Your business"

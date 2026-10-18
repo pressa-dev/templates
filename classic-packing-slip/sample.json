@@ -1,0 +1,23 @@
+{
+  "sender": {
+    "name": "Fernwood Supply Co.",
+    "address": "220 Mill Road, Asheville, NC 28801",
+    "email": "orders@fernwood.example.com"
+  },
+  "order_number": "FW-10482",
+  "date": "October 14, 2026",
+  "ship_to": {
+    "name": "Harbor Street Cafe",
+    "address": "77 Harbor Street, Charleston, SC 29401"
+  },
+  "shipping_method": "UPS Ground",
+  "tracking_number": "1Z 999 AA1 01 2345 6784",
+  "items": [
+    { "sku": "MUG-12-WHT", "description": "Stoneware mug, 12 oz, white", "quantity": 24 },
+    { "sku": "MUG-12-SAG", "description": "Stoneware mug, 12 oz, sage", "quantity": 24 },
+    { "sku": "PLT-8-WHT", "description": "Side plate, 8 in, white", "quantity": 36 },
+    { "sku": "SAU-6-WHT", "description": "Saucer, 6 in, white", "quantity": 48 },
+    { "sku": "CRF-1L", "description": "Glass carafe, 1 litre", "quantity": 6 }
+  ],
+  "notes": "Fragile: glassware is packed in the top layer. Check the contents against this slip and report anything missing within 7 days to orders@fernwood.example.com."
+}

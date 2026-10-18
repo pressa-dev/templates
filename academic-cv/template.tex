@@ -1,4 +1,4 @@
-% Academic CV - Pressa public template (MIT). https://pressa.dev/templates/academic-cv
+% Traditional academic CV - Pressa public template (MIT). https://pressa.dev/templates/academic-cv
 \documentclass[11pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -7,11 +7,14 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
+\usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 
+% `accent` is the colour a visitor can change: section headings and their rules.
+\definecolor{accent}{HTML}{000000}
 \setlength{\parindent}{0pt}
 \frenchspacing
-\titleformat{\section}{\large\scshape}{}{0pt}{}[\vspace{-4pt}\rule{\linewidth}{0.4pt}]
+\titleformat{\section}{\large\scshape\color{accent}}{}{0pt}{}[\vspace{-4pt}\textcolor{accent}{\rule{\linewidth}{0.4pt}}]
 \titlespacing*{\section}{0pt}{14pt}{6pt}
 \setlist[enumerate]{leftmargin=2em, itemsep=4pt, topsep=2pt}
 \pagestyle{fancy}

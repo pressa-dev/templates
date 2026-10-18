@@ -1,0 +1,31 @@
+title: Standard delivery note
+category: order
+position: 2
+summary: A clean delivery note with a colour rule under the header and shaded rows.
+description: >-
+  A delivery note with a clean header with your business name and a colour rule, alternating shaded rows and the total quantity in the accent colour. It takes exactly the same data as the other delivery note designs.
+instructions: >-
+  Send quantity as a number; the total is calculated, so never send it. sku is your item number and
+  may be empty. tracking_number is shown as the delivery reference and may be empty. Do not invent
+  addresses or order numbers; ask the user for any that are missing.
+compiler: pdflatex
+pairs_with:
+  - invoice
+  - purchase-order
+document: delivery-note
+design: Standard
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  blue: "1D4ED8"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"
+# Form labels for fields whose names are not self-explanatory (pressa.dev/templates form).
+labels:
+  sender: "Your business"
+  ship_to: "Deliver to"
+  order_number: "Order number"
+  sku: "Item no."
+  shipping_method: "Delivery method"
+  tracking_number: "Delivery reference"

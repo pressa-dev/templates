@@ -1,0 +1,21 @@
+title: Minimal certificate
+category: certificate
+position: 3
+summary: A quiet landscape certificate in Helvetica with a fine frame and lots of white space.
+description: >-
+  A minimal certificate: a fine frame, the organization and title in small capitals over a short accent rule, the recipient's name set large, the achievement, and signature lines, with plenty of white space. It takes exactly the same data as the other certificate designs.
+instructions: >-
+  Keep the title short (four words or fewer) and the achievement to one or two sentences. Use one to
+  three signatures. When producing a batch, keep every field the same except recipient and
+  certificate_id. Never add a signatory the user did not name.
+compiler: pdflatex
+pairs_with: []
+document: certificate
+design: Minimal
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  graphite: "374151"
+  navy: "1F4E79"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"

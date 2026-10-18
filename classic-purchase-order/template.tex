@@ -1,0 +1,81 @@
+% Classic purchase order - Pressa public template (MIT). https://pressa.dev/templates/purchase-order?design=classic-purchase-order
+% Line totals, subtotal, tax and total are computed from the data, each rounded to the
+% currency's minor unit (cents, whole yen) as printed, so the printed numbers add up.
+% Unit prices keep up to 4 decimals for items priced below a cent.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[margin=20mm,top=18mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+% `accent` is the colour a visitor can change; tints mix it inline (accent!8),
+% never through \colorlet, so they follow the change.
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{6B7280}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcommand{\fieldname}[1]{\textcolor{muted}{\footnotesize\scshape\MakeLowercase{#1}}}
+
+\begin{document}
+\color{ink}
+{% assign d = currency | currency_decimals %}{% assign subtotal = 0 %}{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}{% assign subtotal = subtotal | plus: line %}{% endfor %}{% assign tax = subtotal | times: tax_rate | divided_by: 100.0 | round: d %}{% assign total = subtotal | plus: tax %}
+\begin{tabularx}{\linewidth}{@{}L r@{}}
+  {\Large\bfseries\mbox{}{{ buyer.name }}} & \textcolor{accent}{\fontsize{22}{24}\selectfont\scshape purchase order} \\[6pt]
+  \parbox[t]{0.5\linewidth}{\raggedright\small\mbox{}{{ buyer.address }}\par\mbox{}{{ buyer.email }}} &
+  {\small\begin{tabular}[t]{@{}r@{\hspace{8pt}}l@{}}
+    \textcolor{muted}{PO no.} & {{ po_number }} \\
+    \textcolor{muted}{Date} & {{ date }} \\
+    \textcolor{muted}{Deliver by} & {{ delivery_date }} \\
+    \textcolor{muted}{Terms} & {{ payment_terms }} \\
+  \end{tabular}}
+\end{tabularx}
+
+\vspace{10pt}
+\textcolor{accent}{\rule{\linewidth}{0.8pt}}
+\vspace{8pt}
+
+\begin{tabularx}{\linewidth}{@{}L L@{}}
+  \fieldname{Vendor} & \fieldname{Ship to} \\[2pt]
+  {\bfseries\mbox{}{{ vendor.name }}} & {\bfseries\mbox{}{{ ship_to.name }}} \\
+  {\small {{ vendor.address }}} & {\small {{ ship_to.address }}}
+\end{tabularx}
+
+\vspace{18pt}
+% A longtable, so a long list breaks across pages with the header repeated.
+% Every column has a fixed width: one compile pass gives aligned columns.
+{\renewcommand{\arraystretch}{1.45}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}\setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}\arrayrulecolor{accent}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{24mm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-10\tabcolsep-24mm-12mm-22mm-22mm\relax} >{\raggedleft\arraybackslash}p{12mm} >{\raggedleft\arraybackslash}p{22mm} >{\raggedleft\arraybackslash}p{22mm}@{}}
+  \toprule
+  \textbf{Item no.} & \textbf{Description} & \textbf{Qty} & \textbf{Unit price} & \textbf{Amount} \\
+  \midrule
+\endhead
+  \bottomrule
+\endfoot
+  \bottomrule
+\endlastfoot
+{% for item in items %}{% assign price = item.unit_price | round: 4 %}{% assign line = item.quantity | times: price | round: d %}  {{ item.sku }} & {{ item.description }} & {{ item.quantity | round: 2 }} & {{ price | currency: currency, 4 }} & {{ line | currency: currency }} \\
+{% endfor %}\end{longtable}}
+
+\vspace{8pt}
+\hfill{\renewcommand{\arraystretch}{1.35}\begin{tabular}{@{}l r@{}}
+  \textcolor{muted}{Subtotal} & {{ subtotal | currency: currency }} \\
+  \textcolor{muted}{Tax ({{ tax_rate }}\%)} & {{ tax | currency: currency }} \\
+  \arrayrulecolor{accent}\specialrule{0.8pt}{2pt}{2pt}
+  \textbf{Total} & \textcolor{accent}{\large\bfseries {{ total | currency: currency }}} \\
+\end{tabular}}
+
+\vfill
+\textcolor{muted}{\rule{\linewidth}{0.4pt}}\par\vspace{6pt}
+\begin{tabularx}{\linewidth}{@{}L@{\hspace{10mm}}L@{}}
+  \fieldname{Terms and notes} & \fieldname{Authorized by} \\[2pt]
+  {\small {{ notes }}} & {\small {{ authorized_by }}\par\vspace{18pt}\textcolor{muted}{\rule{0.8\linewidth}{0.5pt}}}
+\end{tabularx}
+\end{document}

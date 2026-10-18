@@ -1,4 +1,4 @@
-title: Certificate
+title: Classic certificate
 category: certificate
 position: 1
 summary: A landscape certificate with a gold double frame, engraved-style lettering and signature lines.
@@ -13,3 +13,12 @@ instructions: >-
   certificate_id. Never add a signatory the user did not name.
 compiler: pdflatex
 pairs_with: []
+document: certificate
+design: Classic
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  midnight: "1E3A5F"
+  burgundy: "8B1E3F"
+  forest: "2D6A4F"
+  teal: "0F766E"
+  black: "111827"

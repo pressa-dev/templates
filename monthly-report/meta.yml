@@ -1,4 +1,4 @@
-title: Monthly report
+title: Standard monthly report
 category: report
 position: 1
 summary: A business report with KPI cards, a bar chart drawn from your numbers, a metrics table and next steps.
@@ -14,3 +14,12 @@ instructions: >-
   sentences. Use only numbers the user provided; never estimate or round them into new claims.
 compiler: pdflatex
 pairs_with: []
+document: monthly-report
+design: Standard
+# Accent colours, name: "hex". The first is the one template.tex defines.
+colors:
+  green: "047857"
+  blue: "1D4ED8"
+  teal: "0F766E"
+  burgundy: "8B1E3F"
+  graphite: "374151"
